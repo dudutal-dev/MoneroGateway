@@ -346,6 +346,25 @@ html[dir="ltr"] footer{text-align:center}
   .hero-hint{margin-top:24px;font-size:.75rem}
 }
 </style>
+<style>
+/* ---------- מודול המדידה (פרק 19) ---------- */
+#mx{position:fixed;inset:0;background:var(--bg);z-index:90;display:none;overflow-y:auto}
+#mx.on{display:block}
+.mx-inner{max-width:760px;margin:0 auto;padding:24px 18px 70px;position:relative}
+.mx-close{position:sticky;top:12px;inset-inline-start:0;padding:8px 18px;font-size:.85rem;margin-bottom:14px}
+.mx-q{padding:14px 0;border-bottom:1px solid var(--line)}
+.mx-q p{font-size:.95rem;margin-bottom:10px}
+.mx-scale{display:flex;gap:8px;flex-wrap:wrap}
+.mx-scale label{flex:1;min-width:52px;text-align:center;background:var(--bg3);border:1px solid var(--line2);border-radius:10px;padding:8px 4px;font-size:.82rem;cursor:pointer;color:var(--ink-dim);transition:.15s}
+.mx-scale input{position:absolute;opacity:0;width:1px;height:1px}
+.mx-scale input:checked+span{color:var(--bg)}
+.mx-scale label:has(input:checked){background:var(--cyan);border-color:var(--cyan);color:#08131a;font-weight:700}
+.mx-scale label:focus-within{outline:2px solid var(--cyan);outline-offset:2px}
+.pvt-pad{height:46vh;min-height:260px;border-radius:22px;background:var(--bg3);border:1px solid var(--line2);display:flex;align-items:center;justify-content:center;font-size:1.15rem;cursor:pointer;user-select:none;-webkit-user-select:none;touch-action:manipulation;text-align:center;padding:20px;transition:background .08s}
+.pvt-pad.wait{background:var(--bg2)}
+.pvt-pad.go{background:var(--green);border-color:var(--green);color:#08131a;font-weight:800;font-size:1.6rem}
+.mx-legend{display:flex;justify-content:space-between;font-size:.75rem;color:var(--ink-faint);margin:4px 2px 14px}
+</style>
 </head>
 <body>
 <canvas id="stars" aria-hidden="true"></canvas>
@@ -496,6 +515,15 @@ html[dir="ltr"] footer{text-align:center}
 <div id="revBox"></div>
 <div id="jStats"></div>
 <div id="jTrend" style="margin-bottom:22px"></div>
+<details class="acc" style="margin-bottom:16px"><summary data-i18n="mx.title">🔬 מדידה — הכלים של המחקר (פרק 19)</summary><div class="acc-body">
+<p class="muted" data-i18n="mx.lead" style="font-size:.88rem;margin-bottom:14px">שלושה כלים מפרוטוקול המדידה הביתי: PVT — מבחן זמן-תגובה, המדד האובייקטיבי היחיד באפליקציה; TMS — שאלון קשיבות-מצב אחרי סשן (Lau 2006, פורסם בספרות); ו-MODTAS — מדידת absorption חד-פעמית למסגור ציפיות. אזהרת גודהארט מהפרק: המדידה משרתת את השאלה "האם להמשיך?" — לא להפך. STAI-6 ו-PCI יתווספו רק אם יוסדר רישוי; עד אז סולמות 1–10 הקיימים ממלאים את התפקיד.</p>
+<div class="grid g3">
+<div class="card" id="pvtCard"></div>
+<div class="card" id="tmsCard"></div>
+<div class="card" id="modtasCard"></div>
+</div>
+<div id="mxTrend" class="mt"></div>
+</div></details>
 <div class="card" style="margin-bottom:16px">
 <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
 <div style="flex:1;min-width:180px"><label data-i18n="a043" style="display:block;font-size:.72rem;color:var(--ink-dim);letter-spacing:.06em;margin-bottom:4px">ניתוח לפי</label>
@@ -525,6 +553,8 @@ html[dir="ltr"] footer{text-align:center}
 <div><label data-i18n="a064">מתח אחרי (1–10)</label><input id="jTenseA" max="10" min="1" type="number"/></div>
 <div><label data-i18n="a065">בהירות אחרי (1–10)</label><input id="jClearA" max="10" min="1" type="number"/></div>
 <div class="full"><label data-i18n="a066">תובנה ← פעולה — משפט אחד: מה לוקחים ליום</label><input data-i18n-placeholder="a220" id="jInsight" placeholder="תובנה שלא מתורגמת לפעולה קטנה — מתפוגגת"/></div>
+<div><label data-i18n="mx.hrvB2">RMSSD לפני (ms) — הזנה ידנית מכל אפליקציית HRV</label><input id="jHrvB" min="0" step="1" type="number"/></div>
+<div><label data-i18n="mx.hrvA2">RMSSD אחרי (ms) — אותה תנוחה, 1–5 דקות</label><input id="jHrvA" min="0" step="1" type="number"/></div>
 </div>
 <details class="acc mt"><summary data-i18n="a067" style="font-size:.92rem">שדות אופציונליים — מהטופס המקורי (1977)</summary><div class="acc-body"><div class="j-form">
 <div><label data-i18n="a068">תנוחה</label><select id="jPos"><option value=""></option><option data-i18n="a069">שכיבה על הגב</option><option data-i18n="a070">שכיבה על הצד</option><option data-i18n="a071">ישיבה</option><option data-i18n="a072">אחר</option></select></div>
@@ -926,11 +956,21 @@ body.light{ --book-ink:#171c30; --book-paper:rgba(255,255,255,.72) }
 <div><label data-i18n="a179">הירדמות — היכן היית?</label><select id="qSleep"><option value=""></option><option value="לא" data-i18n="a180">ער — נשארתי ער</option><option value="חלקית" data-i18n="a181">בתפר — בין ערות לשינה</option><option value="כן" data-i18n="a182">נרדמתי</option></select></div>
 <div class="full"><label data-i18n="a183">מה קרה בפועל — תיאור בלבד</label><textarea data-i18n-placeholder="a226" id="qActual" placeholder="תחושות, דימויים, מה שעלה..."></textarea></div>
 <div class="full"><label data-i18n="a184">תובנה ← פעולה (משפט אחד)</label><input id="qInsight"/></div>
+<div><label data-i18n="mx.hrvB">RMSSD לפני (ms) — אם נמדד</label><input id="qHrvB" min="0" step="1" type="number"/></div>
+<div><label data-i18n="mx.hrvA">RMSSD אחרי (ms)</label><input id="qHrvA" min="0" step="1" type="number"/></div>
 </div>
 <div class="mt2" style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center">
 <button class="btn btn-primary" data-i18n="a185" onclick="player.qsave()">שמור ועבור לניתוח ←</button>
+<button class="btn btn-cyan" data-i18n="mx.tmsAfter" onclick="measure.tmsOpen(true)">🧭 שאלון TMS על הסשן</button>
 <button class="btn btn-ghost" data-i18n="a186" onclick="player.qskip()">דלג הפעם</button>
 </div>
+</div>
+</div>
+<!-- ============ MEASURE (פרק 19) ============ -->
+<div id="mx" role="dialog" aria-modal="true" aria-label="מדידה">
+<div class="mx-inner">
+<button class="btn btn-danger mx-close" onclick="measure.close()">✕ סגור</button>
+<div id="mxBody"></div>
 </div>
 </div>
 <!-- ============ MODAL ============ -->
@@ -2781,6 +2821,13 @@ const HTML_EN = {
  "a300": "🌙 Dream / sleep-threshold tag",
  "a301": "Sleep-threshold entry (hypnagogia)",
  "a302": "Dream",
+ "mx.title": "🔬 Measurement — the research toolkit (chapter 19)",
+ "mx.lead": "Three tools from the home measurement protocol: PVT — a reaction-time test, the only objective measure in the app; TMS — a state-mindfulness questionnaire after a session (Lau 2006, published in full); and MODTAS — a one-time absorption measurement for expectation framing. Goodhart's warning from the chapter: measurement serves the question \"should I continue?\" — not the other way around. STAI-6 and PCI will be added only if licensing is settled; until then the existing 1–10 scales fill that role.",
+ "mx.hrvB": "RMSSD before (ms) — if measured",
+ "mx.hrvA": "RMSSD after (ms)",
+ "mx.hrvB2": "RMSSD before (ms) — manual entry from any HRV app",
+ "mx.hrvA2": "RMSSD after (ms) — same posture, 1–5 minutes",
+ "mx.tmsAfter": "🧭 TMS questionnaire for this session",
  "a059": "Game Plan — what I intended to achieve and how",
  "a060": "What actually happened — description only (3–6 lines, no interpretation)",
  "a061": "Bodily sensations",
@@ -4454,7 +4501,7 @@ const player = {
           if(info && info.x===this.curExId) jd=nx; } }catch(e){}
       this.pendingJd = jd;
       daily.autoMark(); journey.autoMark(this.curExId);
-      ['qTb','qTa','qCb','qCa','qEntry','qSleep','qActual','qInsight'].forEach(id=>document.getElementById(id).value='');
+      ['qTb','qTa','qCb','qCa','qEntry','qSleep','qActual','qInsight','qHrvB','qHrvA'].forEach(id=>document.getElementById(id).value='');
       this.pane('pDone');
       return;
     }
@@ -4466,7 +4513,7 @@ const player = {
     const d=new Date();
     const e={ date:d.toISOString().slice(0,10), time:d.toTimeString().slice(0,5), ex:this.exName,
       jd:this.pendingJd||null, tb:g('qTb'), ta:g('qTa'), cb:g('qCb'), ca:g('qCa'),
-      entry:g('qEntry'), sleep:g('qSleep'), actual:g('qActual'), insight:g('qInsight'), ts:Date.now() };
+      entry:g('qEntry'), sleep:g('qSleep'), actual:g('qActual'), insight:g('qInsight'), hrvB:g('qHrvB'), hrvA:g('qHrvA'), ts:Date.now() };
     const l=journal.list(); l.unshift(e); store.set('gw_journal', l);
     backup.touch();
     this.state='idle';
@@ -4743,12 +4790,12 @@ const journal = {
     const e = { date:g('jDate'), time:g('jTime'), ex:g('jEx'),
       tb:g('jTenseB'), cb:g('jClearB'), entry:g('jEntry'), sleep:g('jSleep'), dream:g('jDream'),
       plan:g('jPlan'), actual:g('jActual'), body:g('jBody'), img:g('jImg'), distract:g('jDistract'),
-      ta:g('jTenseA'), ca:g('jClearA'), insight:g('jInsight'),
+      ta:g('jTenseA'), ca:g('jClearA'), insight:g('jInsight'), hrvB:g('jHrvB'), hrvA:g('jHrvA'),
       pos:g('jPos'), meal:g('jMeal'), dir:g('jDir'), cloth:g('jCloth'), temp:g('jTemp'),
       weather:g('jWeather'), moon:g('jMoon'), phys:g('jPhys'), ts:Date.now() };
     if(!e.ex && !e.plan && !e.actual){ modal('רגע','מלא לפחות את שם התרגול, התוכנית או מה שקרה בפועל — כדי שיהיה מה לזכור.'); return; }
     const l=this.list(); l.unshift(e); store.set('gw_journal', l);
-    ['jTenseB','jClearB','jEntry','jSleep','jDream','jEx','jPlan','jActual','jBody','jImg','jDistract','jTenseA','jClearA','jInsight','jPos','jMeal','jDir','jCloth','jTemp','jWeather','jMoon','jPhys'].forEach(id=>document.getElementById(id).value='');
+    ['jTenseB','jClearB','jEntry','jSleep','jDream','jEx','jPlan','jActual','jBody','jImg','jDistract','jTenseA','jClearA','jInsight','jHrvB','jHrvA','jPos','jMeal','jDir','jCloth','jTemp','jWeather','jMoon','jPhys'].forEach(id=>document.getElementById(id).value='');
     this.render();
   },
   del(ts){ store.set('gw_journal', this.list().filter(x=>x.ts!==ts)); this.render(); },
@@ -4777,7 +4824,7 @@ const journal = {
       const sleepLbl = {'לא':'ער','חלקית':'בתפר','כן':'נרדמתי'}[e.sleep] || e.sleep;
       return `
       <div class="j-entry">
-        <div class="j-head"><b>${e.ex||'תרגול'}</b>${e.jd?`<span class="pill" style="background:rgba(139,123,216,.16);border-color:rgba(139,123,216,.4)">🌌 מסע · יום ${e.jd}</span>`:''}${e.dream?`<span class="pill" style="background:rgba(94,224,206,.12);border-color:rgba(94,224,206,.35)">🌙 ${e.dream}</span>`:''}<span class="faint">${e.date||''} ${e.time||''}${e.entry?' · כניסה '+e.entry+' דק\'':''}${e.sleep?' · '+sleepLbl:''}${delta!==null?' · Δמתח '+(delta>0?'−':'+')+Math.abs(delta):''}</span>
+        <div class="j-head"><b>${e.ex||'תרגול'}</b>${e.jd?`<span class="pill" style="background:rgba(139,123,216,.16);border-color:rgba(139,123,216,.4)">🌌 מסע · יום ${e.jd}</span>`:''}${e.dream?`<span class="pill" style="background:rgba(94,224,206,.12);border-color:rgba(94,224,206,.35)">🌙 ${e.dream}</span>`:''}<span class="faint">${e.date||''} ${e.time||''}${e.entry?' · כניסה '+e.entry+' דק\'':''}${e.sleep?' · '+sleepLbl:''}${delta!==null?' · Δמתח '+(delta>0?'−':'+')+Math.abs(delta):''}${(e.hrvB||e.hrvA)?' · RMSSD '+(e.hrvB||'?')+'→'+(e.hrvA||'?'):''}</span>
         <button class="btn btn-danger" style="padding:4px 12px;font-size:.75rem" onclick="journal.del(${e.ts})">מחק</button></div>
         ${e.plan?`<p><b style="color:var(--gold)">Game Plan:</b> ${e.plan}</p>`:''}
         ${e.actual?`<p class="mt" style="margin-top:6px"><b style="color:var(--cyan)">בפועל:</b> ${e.actual}</p>`:''}
@@ -4800,7 +4847,11 @@ const journal = {
         good:'עלייה = אפקט מיידי חזק יותר' },
       { key:'sleep', name:'הירדמות (% מצטבר)', color:'var(--violet)', raw:'#8b7bd8',
         vals: (()=>{ let n=0,c=0; return rows.map(e=>{ if(!e.sleep) return null; c++; n += e.sleep==='כן'?1:e.sleep==='חלקית'?.5:0; return Math.round(100*n/c); }); })(),
-        good:'ירידה = שליטה טובה יותר במצב הגבולי' }
+        good:'ירידה = שליטה טובה יותר במצב הגבולי' },
+      /* הגרף הרביעי — פרק 19: RMSSD אחרי סשן (הזנה ידנית) */
+      { key:'hrv', name:'RMSSD אחרי (ms)', color:'var(--gold)', raw:'#e0b458',
+        vals: rows.map(e=>num(e.hrvA)),
+        good:'עלייה לאורך זמן = זמינות ואגלית גבוהה יותר — המדד הפיזיולוגי המתוקף ביותר בבית' }
     ];
     const withData = series.filter(s2 => s2.vals.filter(v=>v!==null).length >= 2);
     if(!withData.length){
@@ -4913,6 +4964,249 @@ const journal = {
   }
 };
 window.journal = journal;
+
+/* ---------- מודול המדידה — שלב 4 של מפת הדרכים (פרק 19) ---------- */
+const TMS_ITEMS = [
+ {sc:'d', he:'חוויתי את עצמי כנפרד מהמחשבות והרגשות המשתנים שלי.', en:'I experienced myself as separate from my changing thoughts and feelings.'},
+ {sc:'d', he:'היה לי חשוב יותר להיות פתוח לחוויותיי מאשר לשלוט בהן או לשנות אותן.', en:'I was more concerned with being open to my experiences than controlling or changing them.'},
+ {sc:'c', he:'הייתי סקרן לגלות מה אוכל ללמוד על עצמי מתוך התבוננות בתגובותיי למחשבות, רגשות או תחושות.', en:'I was curious about what I might learn about myself by noticing how I react to certain thoughts, feelings or sensations.'},
+ {sc:'d', he:'חוויתי את מחשבותיי יותר כאירועים בתודעה מאשר כשיקוף מדויק בהכרח של המציאות.', en:'I experienced my thoughts more as events in my mind than as a necessarily accurate reflection of how things really are.'},
+ {sc:'c', he:'הייתי סקרן לראות מה המיינד שלי עושה מרגע לרגע.', en:'I was curious to see what my mind was up to from moment to moment.'},
+ {sc:'c', he:'הייתי סקרן לגבי כל אחת מהמחשבות והרגשות שעלו בי.', en:'I was curious about each of the thoughts and feelings that I was having.'},
+ {sc:'d', he:'הייתי פתוח להתבונן במחשבות וברגשות לא נעימים בלי להתערב בהם.', en:'I was receptive to observing unpleasant thoughts and feelings without interfering with them.'},
+ {sc:'d', he:'השקעתי יותר בלצפות בחוויותיי כפי שהן עולות מאשר בלפענח מה הן עשויות לומר.', en:'I was more invested in just watching my experiences as they arose than in figuring out what they could mean.'},
+ {sc:'d', he:'ניגשתי לכל חוויה בניסיון לקבל אותה — נעימה או לא נעימה.', en:'I approached each experience by trying to accept it, whether pleasant or unpleasant.'},
+ {sc:'c', he:'נשארתי סקרן לגבי טבעה של כל חוויה שעלתה.', en:'I remained curious about the nature of each experience as it arose.'},
+ {sc:'d', he:'הייתי מודע למחשבותיי ולרגשותיי בלי להזדהות איתם יתר על המידה.', en:'I was aware of my thoughts and feelings without over-identifying with them.'},
+ {sc:'c', he:'הייתי סקרן לגבי התגובות שלי לדברים.', en:'I was curious about my reactions to things.'},
+ {sc:'c', he:'הייתי סקרן מה אוכל ללמוד על עצמי מתוך שימת לב למה שמושך את הקשב שלי.', en:'I was curious about what I might learn about myself by just noticing what my attention gets drawn to.'}
+];
+const MODTAS_ITEMS = [
+ ['לפעמים אני מרגיש וחווה דברים כפי שחוויתי אותם בילדות.','Sometimes I feel and experience things as I did as a child.'],
+ ['שפה רהוטה או פיוטית יכולה לרגש אותי עמוקות.','Eloquent or poetic language can move me deeply.'],
+ ['בסרט או בהצגה אני עשוי להישאב עד ששוכח את עצמי ואת סביבתי, וחווה את הסיפור כאילו היה אמיתי.','Watching a film or play I can become so involved that I forget myself and my surroundings, experiencing the story as if it were real.'],
+ ['אם אני מתבונן בתמונה ומסיט מבט, אני יכול לפעמים "לראות" את דמותה, כאילו אני עדיין מביט בה.','If I stare at a picture and look away, I can sometimes still "see" an image of it, as if I were still looking.'],
+ ['לפעמים אני מרגיש כאילו התודעה שלי יכולה לעטוף את העולם כולו.','Sometimes I feel as if my mind could envelop the whole world.'],
+ ['אני אוהב להתבונן בצורות העננים משתנות בשמיים.','I like to watch cloud shapes change in the sky.'],
+ ['אם ארצה, אני יכול לדמיין דברים בחיות כזו שהם מרתקים אותי כמו סרט טוב.','If I wish, I can imagine things so vividly that they hold my attention like a good film.'],
+ ['נדמה לי שאני באמת מבין למה אנשים מתכוונים כשהם מדברים על חוויות מיסטיות.','I think I really know what some people mean when they talk about mystical experiences.'],
+ ['לפעמים אני "יוצא" מהעצמי הרגיל שלי וחווה מצב הוויה שונה לגמרי.','I sometimes "step outside" my usual self and experience an entirely different state of being.'],
+ ['מרקמים — צמר, חול, עץ — מזכירים לי לפעמים צבעים או מוזיקה.','Textures such as wool, sand or wood sometimes remind me of colors or music.'],
+ ['לפעמים אני חווה דברים כאילו הם ממשיים כפליים.','Sometimes I experience things as if they were doubly real.'],
+ ['כשאני מאזין למוזיקה אני יכול להישאב אליה עד שאיני שם לב לשום דבר אחר.','When I listen to music I can get so caught up that I notice nothing else.'],
+ ['אם ארצה, אני יכול לדמיין שגופי כבד כל כך שלא אוכל להזיזו.','If I wish, I can imagine my body so heavy I could not move it.'],
+ ['לעיתים אני חש בנוכחות של אדם לפני שאני רואה או שומע אותו בפועל.','I can often sense the presence of another person before I actually see or hear them.'],
+ ['פצפוץ ולהבות של אש מדורה מציתים את דמיוני.','The crackle and flames of a wood fire stimulate my imagination.'],
+ ['אני מסוגל לעיתים לשקוע כליל בטבע או באמנות, ולחוש שמצב התודעה שלי השתנה זמנית.','I can sometimes be completely immersed in nature or art and feel my whole state of consciousness temporarily altered.'],
+ ['לצבעים שונים יש עבורי משמעויות מובחנות ומיוחדות.','Different colors have distinctive, special meanings for me.'],
+ ['אני מסוגל לשקוע במחשבות בזמן מטלה שגרתית, לשכוח שאני מבצע אותה — ולגלות אחר כך שסיימתי אותה.','I can wander off into my thoughts during a routine task, forget I am doing it, and later find I have completed it.'],
+ ['אני יכול לפעמים להיזכר בחוויות עבר בבהירות ובחיות כאלה, שזה כמו לחיות אותן מחדש.','I can sometimes recall past experiences with such clarity and vividness that it is like living them again.'],
+ ['דברים שנראים חסרי משמעות לאחרים — לי הם דווקא הגיוניים.','Things that seem meaningless to others often make sense to me.'],
+ ['אילו שיחקתי בהצגה, נדמה לי שהייתי מרגיש באמת את רגשות הדמות ו"נהפך" אליה.','Acting in a play, I think I could really feel the character\'s emotions and "become" them.'],
+ ['מחשבותיי מגיעות לעיתים קרובות לא כמילים אלא כדימויים חזותיים.','My thoughts often occur not as words but as visual images.'],
+ ['אני נהנה לעיתים קרובות מדברים קטנים — כמו צורת הכוכב בחיתוך תפוח, או הצבעים בבועות סבון.','I often take delight in small things, like the star shape inside an apple or the colors in soap bubbles.'],
+ ['במוזיקה עוצמתית אני מרגיש לפעמים כאילו אני מורם באוויר.','With powerful music I sometimes feel as if I am being lifted into the air.'],
+ ['לפעמים אני יכול להפוך רעש למוזיקה על ידי אופן ההקשבה שלי.','Sometimes I can turn noise into music by the way I listen to it.'],
+ ['כמה מהזיכרונות החיים ביותר שלי מתעוררים על ידי ריחות.','Some of my most vivid memories are called up by scents and smells.'],
+ ['יצירות מוזיקה מסוימות מזכירות לי תמונות או דפוסי צבע נעים.','Certain pieces of music remind me of pictures or moving patterns of color.'],
+ ['לעיתים קרובות אני יודע מה מישהו עומד לומר לפני שהוא אומר זאת.','I often know what someone is going to say before they say it.'],
+ ['יש לי לעיתים "זיכרונות גופניים" — למשל אחרי שחייה אני עדיין מרגיש כאילו אני במים.','I often have "physical memories" — for example, after swimming I may still feel as if I am in the water.'],
+ ['קול של אדם יכול לרתק אותי עד שאני פשוט ממשיך להקשיב לו.','The sound of a voice can be so fascinating that I just go on listening to it.'],
+ ['לעיתים אני חש איכשהו בנוכחות של מישהו שאינו נמצא שם פיזית.','At times I somehow feel the presence of someone who is not physically there.'],
+ ['לפעמים מחשבות ודימויים מגיעים אליי ללא כל מאמץ מצידי.','Sometimes thoughts and images come to me without the slightest effort on my part.'],
+ ['אני מוצא שלריחות שונים יש צבעים שונים.','I find that different odors have different colors.'],
+ ['שקיעה יכולה לרגש אותי עמוקות.','I can be deeply moved by a sunset.']
+];
+const measure = {
+  L(he,en){ return (typeof i18n!=='undefined' && i18n.lang==='en') ? en : he; },
+  pvtList(){ return store.get('gw_pvt', []); },
+  tmsList(){ return store.get('gw_tms', []); },
+  modtasGet(){ return store.get('gw_modtas', null); },
+  open(html){ const b=document.getElementById('mxBody'); b.innerHTML=html;
+    document.getElementById('mx').classList.add('on'); window.scrollTo(0,0);
+    document.getElementById('mx').scrollTop=0; },
+  close(){ this.pvtAbort(); document.getElementById('mx').classList.remove('on'); this.renderCards(); },
+
+  /* ----- סולם 0–4 משותף לשאלונים ----- */
+  scaleRow(name, i){
+    const lbl = this.L(['כלל לא','מעט','במידה בינונית','במידה רבה','במידה רבה מאוד'],
+                       ['Not at all','A little','Moderately','Quite a bit','Very much']);
+    return `<div class="mx-scale" role="radiogroup">` + [0,1,2,3,4].map(v=>
+      `<label title="${lbl[v]}"><input type="radio" name="${name}${i}" value="${v}"><span>${v}</span></label>`).join('') + `</div>`;
+  },
+  collect(name, n){
+    const out=[];
+    for(let i=0;i<n;i++){ const el=document.querySelector(`input[name="${name}${i}"]:checked`); out.push(el? +el.value : null); }
+    return out;
+  },
+
+  /* ----- TMS — שאלון קשיבות-מצב פוסט-סשן (Lau 2006; 4.1) ----- */
+  tmsOpen(fromSession){
+    this.tmsFrom = fromSession ? (player.exName||'') : '';
+    const intro = this.L(
+      'דרג עד כמה כל היגד מתאר את מה שחווית זה עתה, בסשן שהסתיים. אין תשובות נכונות — 0 = כלל לא, 4 = במידה רבה מאוד. הסולם פורסם במלואו בספרות (Lau 2006) ומודד שני ממדים: סקרנות וריחוק-מתבונן.',
+      'Rate how well each statement describes what you just experienced in the session that ended. There are no right answers — 0 = not at all, 4 = very much. The scale was published in full (Lau 2006) and measures two dimensions: curiosity and decentering.');
+    this.open(`<h3>🧭 ${this.L('שאלון TMS — קשיבות-מצב','TMS — state mindfulness')}</h3>
+      <p class="muted" style="font-size:.9rem;margin-bottom:6px">${intro}</p>
+      <div class="mx-legend"><span>0 = ${this.L('כלל לא','not at all')}</span><span>4 = ${this.L('במידה רבה מאוד','very much')}</span></div>
+      ${TMS_ITEMS.map((it,i)=>`<div class="mx-q"><p><b>${i+1}.</b> ${this.L(it.he,it.en)}</p>${this.scaleRow('tms',i)}</div>`).join('')}
+      <div class="mt2" style="display:flex;gap:10px;flex-wrap:wrap">
+      <button class="btn btn-primary" onclick="measure.tmsSave()">${this.L('שמור ציון','Save score')}</button>
+      <button class="btn btn-ghost" onclick="measure.close()">${this.L('ביטול','Cancel')}</button></div>`);
+  },
+  tmsSave(){
+    const a = this.collect('tms', TMS_ITEMS.length);
+    if(a.some(v=>v===null)){ modal(this.L('חסרות תשובות','Missing answers'), this.L('ענה על כל 13 ההיגדים — או בטל.','Please answer all 13 statements, or cancel.')); return; }
+    const avg = idx => +(idx.reduce((t,i)=>t+a[i],0)/idx.length).toFixed(2);
+    const cIdx = TMS_ITEMS.map((it,i)=>it.sc==='c'?i:null).filter(v=>v!==null);
+    const dIdx = TMS_ITEMS.map((it,i)=>it.sc==='d'?i:null).filter(v=>v!==null);
+    const e = { ts:Date.now(), date:new Date().toISOString().slice(0,10), ex:this.tmsFrom||'', c:avg(cIdx), d:avg(dIdx), a };
+    const l=this.tmsList(); l.unshift(e); store.set('gw_tms', l); backup.touch();
+    this.close();
+    modal(this.L('נשמר','Saved'), this.L(`סקרנות: ${e.c} · ריחוק-מתבונן: ${e.d} (סולם 0–4). המגמה לאורך זמן חשובה מהציון הבודד.`,`Curiosity: ${e.c} · Decentering: ${e.d} (0–4 scale). The trend over time matters more than any single score.`));
+  },
+
+  /* ----- MODTAS — מדידת absorption חד-פעמית (Jamieson 2005; 4.2) ----- */
+  modtasOpen(){
+    const intro = this.L(
+      'שאלון חד-פעמי של 34 היגדים (גרסה מודרנית לסולם ה-absorption של טלגן). התכונה הנמדדת היא המנבא היציב ביותר בספרות לעוצמת חוויות במצבים משתנים. דרג כל היגד: 0 = אף פעם, 4 = לעיתים קרובות מאוד. בסיום תקבל את המסגור של הציון — לא "טוב" או "רע", אלא מה לצפות ממנו.',
+      'A one-time questionnaire of 34 statements (a modern Likert version of the Tellegen absorption scale). The measured trait is the most stable predictor in the literature of experience intensity in altered states. Rate each statement: 0 = never, 4 = very often. At the end you get the framing of your score — not "good" or "bad", but what to expect from it.');
+    this.open(`<h3>🌀 ${this.L('MODTAS — שאלון ה-absorption','MODTAS — the absorption questionnaire')}</h3>
+      <p class="muted" style="font-size:.9rem;margin-bottom:6px">${intro}</p>
+      <div class="mx-legend"><span>0 = ${this.L('אף פעם','never')}</span><span>4 = ${this.L('לעיתים קרובות מאוד','very often')}</span></div>
+      ${MODTAS_ITEMS.map((it,i)=>`<div class="mx-q"><p><b>${i+1}.</b> ${this.L(it[0],it[1])}</p>${this.scaleRow('mod',i)}</div>`).join('')}
+      <div class="mt2" style="display:flex;gap:10px;flex-wrap:wrap">
+      <button class="btn btn-primary" onclick="measure.modtasSave()">${this.L('חשב את הציון שלי','Compute my score')}</button>
+      <button class="btn btn-ghost" onclick="measure.close()">${this.L('ביטול','Cancel')}</button></div>`);
+  },
+  modtasSave(){
+    const a = this.collect('mod', MODTAS_ITEMS.length);
+    const answered = a.filter(v=>v!==null);
+    if(answered.length < MODTAS_ITEMS.length){ modal(this.L('חסרות תשובות','Missing answers'), this.L(`ענית על ${answered.length} מתוך 34. השלם את כולם — או בטל.`,`You answered ${answered.length} of 34. Complete them all, or cancel.`)); return; }
+    const score = +(answered.reduce((t,v)=>t+v,0)/answered.length).toFixed(2);
+    store.set('gw_modtas', { ts:Date.now(), date:new Date().toISOString().slice(0,10), score, a }); backup.touch();
+    this.close();
+    this.modtasMeaning();
+  },
+  modtasMeaning(){
+    const m = this.modtasGet(); if(!m) return;
+    const band = m.score < 1.4 ? 'low' : m.score <= 2.4 ? 'mid' : 'high';
+    const txt = {
+      low:  this.L('ציון נמוך יחסית: אל תשפוט את התרגול לפי "מסעות" שלא הגיעו — אצלך סביר שהחוויות יהיו עדינות, וזה צפוי ותקין. המדדים שלך הם המעשיים: שינה, Δ מתח, זמן כניסה וריכוז. הערך של התרגול אינו תלוי בעוצמת הדימויים.',
+                   'A relatively low score: do not judge the practice by "journeys" that did not arrive — for you the experiences will likely be subtle, and that is expected and fine. Your measures are the practical ones: sleep, tension delta, entry time and focus. The value of the practice does not depend on imagery intensity.'),
+      mid:  this.L('ציון בינוני — הטווח של רוב המתרגלים: צפה לחוויות מתונות שמתחזקות עם תרגול עקבי. השקיפות של האפליקציה עובדת לטובתך — עקוב אחרי ארבעת הגרפים, והתייחס לחוויות חיות במיוחד בסקרנות ובלי מסקנות מרחיקות לכת.',
+                   'A middle score — the range of most practitioners: expect moderate experiences that strengthen with consistent practice. The app\'s transparency works in your favor — follow the four trend graphs, and treat especially vivid experiences with curiosity and without far-reaching conclusions.'),
+      high: this.L('ציון גבוה: צפה לחוויות חיות ועוצמתיות — דימויים, תחושות גוף, אולי גם חוויות גבול-שינה בולטות. דווקא בגללן חשוב העיקרון של פרק 11: תיאור לפני פרשנות. עוצמת חוויה אינה ראיה למקורה; היא ראיה לכושר ה-absorption שלך.',
+                   'A high score: expect vivid, intense experiences — imagery, body sensations, perhaps striking sleep-threshold experiences. Precisely because of them, chapter 11\'s principle matters: description before interpretation. The intensity of an experience is not evidence of its origin; it is evidence of your capacity for absorption.')
+    }[band];
+    modal(this.L('ציון ה-absorption שלך: ','Your absorption score: ') + m.score + ' / 4', txt);
+  },
+
+  /* ----- PVT — מבחן זמן-תגובה, המדד האובייקטיבי היחיד (4.4) ----- */
+  pvt:null,
+  pvtStart(dur){
+    this.pvtAbort();
+    const p = this.pvt = { dur, rts:[], fs:0, state:'idle', t0:0, timer:null, endAt:0 };
+    const intro = this.L(
+      `${dur} שניות. כשהמשטח נצבע ירוק ומופיע מונה — הקש מיד. הקשה לפני הירוק נספרת כזינוק מוקדם. בצע ישוב, באותה שעה ביום, לתוצאות ברות-השוואה.`,
+      `${dur} seconds. When the pad turns green and a counter appears — tap immediately. Tapping before the green counts as a false start. Sit down, same time of day, for comparable results.`);
+    this.open(`<h3>⚡ PVT · ${dur} ${this.L('שניות','seconds')}</h3>
+      <p class="muted" style="font-size:.9rem;margin-bottom:12px">${intro}</p>
+      <div id="pvtPad" class="pvt-pad wait"><span id="pvtMsg">${this.L('הקש כאן כדי להתחיל','Tap here to begin')}</span></div>
+      <p class="faint" id="pvtStat" style="margin-top:10px" aria-live="polite"></p>`);
+    const pad = document.getElementById('pvtPad');
+    pad.addEventListener('pointerdown', e=>{ e.preventDefault(); this.pvtTap(); });
+  },
+  pvtMsg(t){ const el=document.getElementById('pvtMsg'); if(el) el.textContent=t; },
+  pvtArm(){
+    const p=this.pvt; if(!p) return;
+    if(performance.now() >= p.endAt){ this.pvtFinish(); return; }
+    p.state='wait'; const pad=document.getElementById('pvtPad');
+    pad.classList.remove('go'); pad.classList.add('wait');
+    this.pvtMsg(this.L('המתן לירוק...','Wait for green...'));
+    p.timer = setTimeout(()=>{ if(!this.pvt) return;
+      p.state='go'; p.t0=performance.now();
+      pad.classList.remove('wait'); pad.classList.add('go'); this.pvtMsg('0');
+      p.timer = setInterval(()=>{ if(this.pvt && p.state==='go') this.pvtMsg(String(Math.round(performance.now()-p.t0))); }, 47);
+    }, 2000 + Math.random()*3000);
+  },
+  pvtTap(){
+    const p=this.pvt; if(!p) return;
+    if(p.state==='idle'){ p.endAt = performance.now() + p.dur*1000; this.pvtArm(); return; }
+    if(p.state==='wait'){ p.fs++; clearTimeout(p.timer);
+      this.pvtMsg(this.L('זינוק מוקדם! המתן לירוק','False start! Wait for green'));
+      const st=document.getElementById('pvtStat'); if(st) st.textContent=this.L('זינוקים מוקדמים: ','False starts: ')+p.fs;
+      p.timer = setTimeout(()=>this.pvtArm(), 1200); return; }
+    if(p.state==='go'){ clearInterval(p.timer);
+      const rt = Math.round(performance.now()-p.t0); p.rts.push(rt); p.state='between';
+      const st=document.getElementById('pvtStat'); if(st) st.textContent = `${this.L('תגובות','responses')}: ${p.rts.length} · ${this.L('אחרונה','last')}: ${rt}ms`;
+      this.pvtMsg(rt+'ms');
+      p.timer = setTimeout(()=>this.pvtArm(), 900); }
+  },
+  pvtAbort(){ if(this.pvt){ clearTimeout(this.pvt.timer); clearInterval(this.pvt.timer); this.pvt=null; } },
+  pvtFinish(){
+    const p=this.pvt; if(!p || !p.rts.length){ this.pvtAbort(); this.close(); return; }
+    const sorted=[...p.rts].sort((a,b)=>a-b);
+    const med = sorted[Math.floor(sorted.length/2)];
+    const mean = Math.round(p.rts.reduce((a,b)=>a+b,0)/p.rts.length);
+    const lapses = p.rts.filter(r=>r>500).length;
+    const e = { ts:Date.now(), date:new Date().toISOString().slice(0,10), dur:p.dur, n:p.rts.length, med, mean, lapses, fs:p.fs };
+    const l=this.pvtList(); l.unshift(e); store.set('gw_pvt', l); backup.touch();
+    this.pvtAbort();
+    this.open(`<h3>⚡ PVT — ${this.L('תוצאה','result')}</h3>
+      <div class="grid g3 mt">
+        <div class="card" style="text-align:center"><div class="eyebrow">${this.L('חציון','median')}</div><div style="font-size:1.7rem;color:var(--cyan)">${med}ms</div></div>
+        <div class="card" style="text-align:center"><div class="eyebrow">${this.L('ממוצע','mean')}</div><div style="font-size:1.7rem;color:var(--gold)">${mean}ms</div></div>
+        <div class="card" style="text-align:center"><div class="eyebrow">${this.L('החטאות (>500ms)','lapses (>500ms)')}</div><div style="font-size:1.7rem;color:var(--violet)">${lapses}</div></div>
+      </div>
+      <p class="muted mt" style="font-size:.88rem">${this.L(`${e.n} תגובות · ${e.fs} זינוקים מוקדמים. ערך בודד אומר מעט — המגמה על פני שבועות היא המדד. חציון עולה בבקרים עשוי להעיד על חוב שינה; ירידה לאורך תקופת תרגול היא הסימן שהכלים היומיים עובדים.`,`${e.n} responses · ${e.fs} false starts. A single value says little — the trend across weeks is the measure. A rising morning median may indicate sleep debt; a decline across a practice period is the sign the daily tools are working.`)}</p>
+      <div class="mt" style="display:flex;gap:10px;flex-wrap:wrap">
+      <button class="btn btn-primary" onclick="measure.close()">${this.L('סגור','Close')}</button>
+      <button class="btn btn-ghost" onclick="measure.pvtStart(${p.dur})">${this.L('הרץ שוב','Run again')}</button></div>`);
+  },
+
+  /* ----- ספארקליין קטן לגרפי המדידה ----- */
+  spark(vals, color){
+    const pts = vals.map((v,i)=>({v,i})).filter(p=>p.v!==null && !isNaN(p.v));
+    if(pts.length<2) return '';
+    const W=200,H=44,P=4;
+    const min=Math.min(...pts.map(p=>p.v)), max=Math.max(...pts.map(p=>p.v)), span=(max-min)||1;
+    const x=i=>P+(pts.length<2?0:(i*(W-2*P)/(vals.length-1)));
+    const y=v=>H-P-((v-min)/span)*(H-2*P);
+    const d=pts.map((p,k)=>`${k?'L':'M'}${x(p.i).toFixed(1)},${y(p.v).toFixed(1)}`).join(' ');
+    return `<svg viewBox="0 0 ${W} ${H}" style="width:100%;height:44px;display:block" aria-hidden="true"><path d="${d}" fill="none" stroke="${color}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+  },
+
+  /* ----- כרטיסי המדידה במסך הניתוח ----- */
+  renderCards(){
+    const pc=document.getElementById('pvtCard'); if(!pc) return;
+    const L=(he,en)=>this.L(he,en);
+    const pvt=this.pvtList();
+    pc.innerHTML = `<div class="eyebrow">⚡ PVT</div>
+      <p class="muted" style="font-size:.84rem;margin:6px 0 10px">${L('מבחן זמן-תגובה — המדד האובייקטיבי היחיד כאן. בבוקר, לאורך תקופת תרגול.','A reaction-time test — the only objective measure here. Mornings, across a practice period.')}</p>
+      ${pvt.length?`<p style="font-size:.92rem;margin-bottom:8px"><b style="color:var(--cyan)">${pvt[0].med}ms</b> <span class="faint">· ${pvt[0].date} · ${pvt.length} ${L('מדידות','tests')}</span></p>`:''}
+      ${this.spark(pvt.slice(0,20).reverse().map(e=>e.med), '#5ee0ce')}
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
+      <button class="btn btn-cyan" style="padding:7px 14px;font-size:.8rem" onclick="measure.pvtStart(60)">${L("60 שנ'","60s")}</button>
+      <button class="btn btn-ghost" style="padding:7px 14px;font-size:.8rem" onclick="measure.pvtStart(180)">${L("3 דק'","3 min")}</button></div>`;
+    const tms=this.tmsList();
+    document.getElementById('tmsCard').innerHTML = `<div class="eyebrow">🧭 TMS</div>
+      <p class="muted" style="font-size:.84rem;margin:6px 0 10px">${L('קשיבות-מצב אחרי סשן: סקרנות + ריחוק-מתבונן (0–4). אחרי סשנים נבחרים — לא כולם.','State mindfulness after a session: curiosity + decentering (0–4). After selected sessions — not all of them.')}</p>
+      ${tms.length?`<p style="font-size:.92rem;margin-bottom:8px"><b style="color:var(--cyan)">${L('סקרנות','curiosity')} ${tms[0].c}</b> · <b style="color:var(--violet)">${L('ריחוק','decentering')} ${tms[0].d}</b> <span class="faint">· ${tms.length}</span></p>`:''}
+      ${this.spark(tms.slice(0,20).reverse().map(e=>e.c), '#5ee0ce')}
+      ${this.spark(tms.slice(0,20).reverse().map(e=>e.d), '#8b7bd8')}
+      <button class="btn btn-cyan" style="padding:7px 14px;font-size:.8rem;margin-top:10px" onclick="measure.tmsOpen(false)">${L('מלא שאלון','Fill in')}</button>`;
+    const m=this.modtasGet();
+    document.getElementById('modtasCard').innerHTML = `<div class="eyebrow">🌀 MODTAS</div>
+      <p class="muted" style="font-size:.84rem;margin:6px 0 10px">${L('תכונת absorption — חד-פעמי. הציון קובע מסגור ציפיות, לא איכות.','The absorption trait — one-time. The score frames expectations, not quality.')}</p>
+      ${m?`<p style="font-size:1.05rem;margin-bottom:8px"><b style="color:var(--gold)">${m.score} / 4</b> <span class="faint">· ${m.date}</span></p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn btn-cyan" style="padding:7px 14px;font-size:.8rem" onclick="measure.modtasMeaning()">${L('מה הציון אומר','What it means')}</button>
+        <button class="btn btn-ghost" style="padding:7px 14px;font-size:.8rem" onclick="modal('${L('מדידה חוזרת','Repeat measurement')}','${L('זו מדידת תכונה — היא יציבה ואין צורך לחזור עליה. למדוד שוב בכל זאת?','This measures a trait — it is stable and does not need repeating. Measure again anyway?')}','${L('מדוד שוב','Measure again')}',()=>measure.modtasOpen())">${L('שוב','Redo')}</button></div>`
+      :`<button class="btn btn-cyan" style="padding:7px 14px;font-size:.8rem" onclick="measure.modtasOpen()">${L('התחל (34 היגדים)','Start (34 items)')}</button>`}`;
+  }
+};
+window.measure = measure;
+try{ measure.renderCards(); }catch(e){}
 journal.render();
 (function(){ const d=new Date();
   document.getElementById('jDate').value=d.toISOString().slice(0,10);
@@ -4979,7 +5273,7 @@ window.addEventListener('keydown', e=>{ if(e.key==='Escape' && document.getEleme
 })();
 
 /* ---------- גרסה ורענון כפוי ---------- */
-const APP_VERSION = '2026.08.11-b25';
+const APP_VERSION = '2026.08.11-b26';
 (function(){
   const set = ()=>{ const el=document.getElementById('appVer'); if(el) el.textContent = APP_VERSION; };
   set(); setTimeout(set, 300);
