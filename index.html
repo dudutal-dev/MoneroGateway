@@ -403,8 +403,9 @@ html[dir="ltr"] footer{text-align:center}
   <p class="hero-sub" data-i18n="home.hero.sub">שורת הפתיחה של ההצהרה מ-1977 — המשפט שבו נפתח כל תרגול בשיטה.</p>
   <p class="hero-lead" data-i18n="a012">מערכת אימון תודעה מובנית, המבוססת על ה-Gateway Intermediate Workbook של מכון מונרו (1977) — מסמך ששוחרר מארכיון ה-CIA — ועל דוח הניתוח הצבאי של סא"ל וויין מקדונל (1983). מהרפיה עמוקה ועד מודעות מורחבת, צעד אחר צעד.</p>
   <div class="hero-facts">
-    <div><b>30</b><span data-i18n="home.fact.days">ימי מסע</span></div>
-    <div><b>28</b><span data-i18n="home.fact.ex">תרגולים</span></div>
+    <div><b>30+7</b><span data-i18n="home.fact.days">ימי מסע</span></div>
+    <div><b>35</b><span data-i18n="home.fact.ex">תרגולים</span></div>
+    <div><b>21</b><span data-i18n="home.fact.book">פרקי ספר</span></div>
     <div><b>6Hz</b><span data-i18n="home.fact.hz">פרוטוקול מחקרי</span></div>
   </div>
   <div class="hero-hint" data-i18n="home.hero.hint">↓ קרא בקצרה מה השיטה — ולמטה תבחר מאיפה להתחיל</div>
@@ -437,7 +438,7 @@ html[dir="ltr"] footer{text-align:center}
 <div style="text-align:center">
 <div class="eyebrow" data-i18n="home.cta.eyebrow">מכאן מתחילים</div>
 <h2 data-i18n="home.cta.title" style="font-size:1.6rem">לאן להמשיך</h2>
-<p class="lead mb" data-i18n="home.cta.lead" style="max-width:640px;margin-inline:auto">אם זו הפעם הראשונה — המסע בן 30 הימים הוא הדרך המומלצת: הוא בנוי בדיוק לפי סדר החוברת המקורית, ומונע דילוג על שלבים. אם כבר יש לך ניסיון — אפשר לגשת ישירות לספריית התרגולים.</p>
+<p class="lead mb" data-i18n="home.cta.lead" style="max-width:640px;margin-inline:auto">אם זו הפעם הראשונה — המסע בן 30 הימים הוא הדרך המומלצת: הוא בנוי בדיוק לפי סדר החוברת המקורית, ומונע דילוג על שלבים. למי שמסיים נפתח שבוע הרחבה (רשות) — ימים 31–37, עם הכלים מהפרקים המדעיים של הספר: אנחה מחזורית, NSDR ותנומת אדיסון. אם כבר יש לך ניסיון — אפשר לגשת ישירות לספריית התרגולים.</p>
 <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center">
 <button class="btn btn-primary" data-i18n="home.cta.journey" onclick="ui.go('journey')">התחל את המסע · 30 יום ←</button>
 <button class="btn btn-ghost" data-i18n="home.cta.lib" onclick="ui.go('lib')">כל התרגולים</button>
@@ -479,9 +480,9 @@ html[dir="ltr"] footer{text-align:center}
 
 <!-- ============ JOURNEY 30 DAYS ============ -->
 <section class="screen" id="s-journey">
-<div class="eyebrow" data-i18n="a028">תוכנית 30 הימים · מתוך ספר המחקר</div>
+<div class="eyebrow" data-i18n="a028">תוכנית 30 הימים + שבוע הרחבה · מתוך ספר המחקר</div>
 <h2 data-i18n="a029">המסע</h2>
-<p class="lead mb" data-i18n="a194" data-i18n-html="1">מסלול מדורג של ארבעה שבועות, הבנוי על סדר החוברת המקורית (1977) ועל הפרוטוקול המחקרי העדכני (6Hz על נשא 250Hz). כל יום — משימה אחת ברורה. הכלל מהספר: <b data-i18n="a030" style="color:var(--ink)">אל תדלגו</b> — כל תרגיל מניח מיומנות שנרכשה קודם; אם שבוע לא "התיישב", חוזרים עליו.</p>
+<p class="lead mb" data-i18n="a194" data-i18n-html="1">מסלול מדורג של ארבעה שבועות, הבנוי על סדר החוברת המקורית (1977) ועל הפרוטוקול המחקרי העדכני (6Hz על נשא 250Hz). כל יום — משימה אחת ברורה. הכלל מהספר: <b data-i18n="a030" style="color:var(--ink)">אל תדלגו</b> — כל תרגיל מניח מיומנות שנרכשה קודם; אם שבוע לא "התיישב", חוזרים עליו. ולמי שמסיים את יום 30 נפתח שבוע חמישי בצבע זהב — <b style="color:var(--gold)">שבוע ההרחבה (רשות)</b>: ימים 31–37, שבעה כלים מהפרקים המדעיים של הספר (14–20) — כיול נשימה אישי, אנחה מחזורית, NSDR, מצב קשב 15Hz ותנומת אדיסון — עם מדידת PVT אובייקטיבית בתחילתו ובסופו.</p>
 <div id="journeyBox"></div>
 <hr class="sep"/>
 <div class="eyebrow" data-i18n="a031">במקביל למסע</div>
@@ -2721,6 +2722,7 @@ const HTML_EN = {
  "home.hero.sub": "The opening line of the 1977 affirmation — the sentence that begins every practice in the method.",
  "home.fact.days": "journey days",
  "home.fact.ex": "exercises",
+ "home.fact.book": "book chapters",
  "home.fact.hz": "research protocol",
  "home.hero.hint": "↓ A short read on the method — and below, choose where to begin",
  "home.brand.title": "Back to home",
@@ -2791,7 +2793,7 @@ const HTML_EN = {
  "a025": "the security repository box",
  "a026": "resonant breathing",
  "a027": "Disclosure and scientific clarification:",
- "a028": "The 30-day program · from the research book",
+ "a028": "The 30-day program + extension week · from the research book",
  "a029": "The Journey",
  "a030": "do not skip ahead",
  "a031": "Alongside the journey",
@@ -2966,7 +2968,7 @@ const HTML_EN = {
  "a191": "When each ear hears a slightly different frequency (for example 250Hz against 256Hz), the brain \"produces\" the difference beat — 6Hz — a sound that does not exist in the air but only in the nervous system. A controlled study (PLOS ONE, 2026, two experiments, 219 participants) found that a theta beat of <b style=\"color:var(--ink)\">6Hz</b> significantly improved both calm and focus — and that is the protocol this generator is calibrated to: 6Hz on a 250Hz carrier, with a quiet pink noise layer (−12dB). <b style=\"color:var(--gold)\">Stereo headphones are mandatory — over speakers the mechanism simply does not occur.</b>",
  "a192": "Every session opens with three fixed steps, in the order set by the research book (chapter 10, day 5): (1) <b style=\"color:var(--ink)\">the affirmation</b> — the full text of the First Affirmation from 1977, \"I am more than my physical body...\" — with the Workbook stressing: \"the words mean nothing without the feeling\"; (2) <b style=\"color:var(--ink)\">the security repository box</b> — setting every worry aside for the duration of the practice; (3) <b style=\"color:var(--ink)\">resonant breathing</b> — filling the body with \"new energy\" in six steps. And every session closes with writing in the journal.",
  "a193": "<b>Disclosure and scientific clarification:</b> the effect of binaural frequencies on brainwaves and relaxation is documented in research; by contrast, the method's far-reaching claims (out-of-body experiences, remote viewing, influence on reality) are part of the historical documents and are not scientifically established. The app presents the method as it is in the original, as a tool for relaxation, focus and observation — and it is not a substitute for medical or psychological care. Do not listen to the frequencies while driving or operating machinery; in case of epilepsy, a pacemaker or pregnancy — consult a physician. At any moment during practice, moving any part of the body returns you immediately to full wakefulness.",
- "a194": "A graduated four-week track, built on the order of the original workbook (1977) and on the current research protocol (6Hz on a 250Hz carrier). Each day — one clear task. The rule from the book: <b style=\"color:var(--ink)\">do not skip ahead</b> — every exercise assumes a skill acquired earlier; if a week did not settle, repeat it.",
+ "a194": "A graduated four-week track, built on the order of the original workbook (1977) and on the current research protocol (6Hz on a 250Hz carrier). Each day — one clear task. The rule from the book: <b style=\"color:var(--ink)\">do not skip ahead</b> — every exercise assumes a skill acquired earlier; if a week did not settle, repeat it. And for those who complete day 30, a fifth week opens in gold — <b style=\"color:var(--gold)\">the extension week (optional)</b>: days 31–37, seven tools drawn from the book's science chapters (14–20) — personal breath calibration, cyclic sighing, NSDR, a 15Hz attention state and the Edison nap — with an objective PVT measurement at its start and end.",
  "a195": "Your streak · <span id=\"streakCount\" style=\"color:var(--cyan)\">0</span> days",
  "a196": "<b>The golden rule — description before interpretation:</b> write what happened, not what it means. \"I saw purple light in my field of vision, lasting about a minute\" — that is description. \"My chakra opened\" — that is interpretation. Old interpretations change what you remember; raw descriptions do not.",
  "a197": "Three levels of certainty. The precise position: <b style=\"color:var(--ink)\">the practice may help; most of the explanations offered for it have either not been tested or have been refuted.</b>",
@@ -3002,7 +3004,7 @@ const HTML_EN = {
  "a149": "Sources: Monroe Institute, \"Gateway Intermediate Workbook\" (1977), released by the CIA in 2003 (CIA-RDP96-00788R001700210023-7) · McDonnell, \"Analysis and Assessment of Gateway Process\" (1983) · Oster, \"Auditory Beats in the Brain\", Scientific American 229 (1973) · Atwater, \"Inducing States of Consciousness with a Binaural Beat Technology\" (1997) · Amd, PLOS ONE 21(4): e0335580 (2026) — the basis for the 6Hz/250Hz protocol · This app is for education, relaxation and self-observation. It is not a medical device and not a substitute for professional advice. Data is stored locally on your device only.",
  "home.cta.eyebrow": "Start here",
  "home.cta.title": "Where to go next",
- "home.cta.lead": "If this is your first time, the 30-day journey is the recommended path: it is built exactly on the order of the original workbook, and prevents skipping stages. If you already have experience, you can go straight to the exercise library.",
+ "home.cta.lead": "If this is your first time, the 30-day journey is the recommended path: it is built exactly on the order of the original workbook, and prevents skipping stages. For those who finish, an optional extension week opens — days 31–37, with the tools from the book's science chapters: cyclic sighing, NSDR and the Edison nap. If you already have experience, you can go straight to the exercise library.",
  "home.cta.journey": "Begin the journey · 30 days →",
  "home.cta.lib": "All exercises",
  "home.cta.goal": "By goal",
@@ -5309,7 +5311,7 @@ window.addEventListener('keydown', e=>{ if(e.key==='Escape' && document.getEleme
 })();
 
 /* ---------- גרסה ורענון כפוי ---------- */
-const APP_VERSION = '2026.08.11-b29-ext';
+const APP_VERSION = '2026.08.11-b38-ext';
 (function(){
   const set = ()=>{ const el=document.getElementById('appVer'); if(el) el.textContent = APP_VERSION; };
   set(); setTimeout(set, 300);
