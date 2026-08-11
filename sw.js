@@ -1,8 +1,9 @@
 /* Gateway — service worker
    מטרה: שהאפליקציה תיפתח ותעבוד במלואה גם בלי חיבור לרשת.
-   אסטרטגיה: network-first לדף עצמו (כדי לקבל עדכונים), cache-first לגופנים. */
+   אסטרטגיה: network-first לדף עצמו (כדי לקבל עדכונים), עם נפילה למטמון.
+   הגופנים מוטמעים בתוך index.html — אין עוד תלות בשרתי גופנים חיצוניים. */
 
-const VERSION = 'gateway-2026.08.11-b31-ext20';
+const VERSION = 'gateway-2026.08.11-b37-journey5';
 const CORE = ['./', './index.html'];
 
 self.addEventListener('install', e => {
@@ -26,21 +27,8 @@ self.addEventListener('fetch', e => {
   if (req.method !== 'GET') return;
 
   const url = new URL(req.url);
-  const isFont = /fonts\.(googleapis|gstatic)\.com/.test(url.hostname);
 
-  // גופנים: מהמטמון קודם — הם לא משתנים, וכך אין תלות ברשת
-  if (isFont) {
-    e.respondWith(
-      caches.match(req).then(hit => hit || fetch(req).then(res => {
-        const copy = res.clone();
-        caches.open(VERSION).then(c => c.put(req, copy)).catch(() => {});
-        return res;
-      }).catch(() => hit))
-    );
-    return;
-  }
-
-  // הדף עצמו: מהרשת קודם, ועם נפילה למטמון כשאין חיבור
+  // הדף עצמו (וקבצים מקומיים כמו ה-PDF): מהרשת קודם, ועם נפילה למטמון כשאין חיבור
   if (req.mode === 'navigate' || url.origin === location.origin) {
     e.respondWith(
       fetch(req).then(res => {
