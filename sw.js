@@ -3,7 +3,7 @@
    אסטרטגיה: network-first לדף עצמו (כדי לקבל עדכונים), עם נפילה למטמון.
    הגופנים מוטמעים בתוך index.html — אין עוד תלות בשרתי גופנים חיצוניים. */
 
-const VERSION = 'gateway-2026.08.11-b34-measure';
+const VERSION = 'gateway-2026.08.11-b35-fidelity';
 const CORE = ['./', './index.html'];
 
 self.addEventListener('install', e => {

@@ -516,7 +516,7 @@ html[dir="ltr"] footer{text-align:center}
 <div id="jStats"></div>
 <div id="jTrend" style="margin-bottom:22px"></div>
 <details class="acc" style="margin-bottom:16px"><summary data-i18n="mx.title">🔬 מדידה — הכלים של המחקר (פרק 19)</summary><div class="acc-body">
-<p class="muted" data-i18n="mx.lead" style="font-size:.88rem;margin-bottom:14px">שלושה כלים מפרוטוקול המדידה הביתי: PVT — מבחן זמן-תגובה, המדד האובייקטיבי היחיד באפליקציה; TMS — שאלון קשיבות-מצב אחרי סשן (Lau 2006, פורסם בספרות); ו-MODTAS — מדידת absorption חד-פעמית למסגור ציפיות. אזהרת גודהארט מהפרק: המדידה משרתת את השאלה "האם להמשיך?" — לא להפך. STAI-6 ו-PCI יתווספו רק אם יוסדר רישוי; עד אז סולמות 1–10 הקיימים ממלאים את התפקיד.</p>
+<p class="muted" data-i18n="mx.lead" style="font-size:.88rem;margin-bottom:14px">שלושה כלים מפרוטוקול המדידה הביתי: PVT — מבחן זמן-תגובה, המדד האובייקטיבי היחיד באפליקציה; TMS — שאלון קשיבות-מצב אחרי סשן (Lau 2006, פורסם בספרות); ו-MODTAS — מדידת absorption חד-פעמית למסגור ציפיות. את ה-RMSSD מודדים פעמיים-שלוש בשבוע, לא בכל סשן — כדי שהמדידה לא תהפוך לטקס חרדתי. אזהרת גודהארט מהפרק: המדידה משרתת את השאלה "האם להמשיך?" — לא להפך. STAI-6 ו-PCI יתווספו רק אם יוסדר רישוי; עד אז סולמות 1–10 הקיימים ממלאים את התפקיד.</p>
 <div class="grid g3">
 <div class="card" id="pvtCard"></div>
 <div class="card" id="tmsCard"></div>
@@ -1625,18 +1625,18 @@ const EXERCISES = [
   steps:[{ph:"הכנה", t:"שכב בתנוחת השינה שלך. חמש נשימות עמוקות ואיטיות.", s:50, br:1, beat:{c:200,b:3}},
    {ph:"ספירה", t:"התחל לספור לאט בתוכך: אחת... שתיים... שלוש... כל מספר — צעד עמוק יותר אל תוך רוך. לפני שתגיע לעשרים — תהיה כבר בדרך פנימה. לילה טוב.", s:180, beat:{c:200,b:3}}]},
  {id:"sleep025", grp:"שינה וגבול-שינה", name:"שינה עמוקה — 0.25Hz ניסיוני", icon:"🌊", ac:"var(--ink-dim)", min:12, lvl:"C-1", beat:{c:200,b:0.25}, noWarm:1,
-  desc:"אופציה ניסיונית (פרק 16): פעימה איטית במיוחד בקצב גלי השינה העמוקה עצמם. הבסיס המחקרי צעיר ודל מזה של 3Hz — מוצג ככזה. אם 3Hz עובד לך, הישאר איתו.",
-  steps:[{ph:"מסגור", t:"זהו פרוטוקול ניסיוני: פעימה של רבע הרץ — גל אחד כל ארבע שניות, איטי כמו גלי השינה העמוקה. הראיות עבורו מוקדמות. שכב בתנוחת השינה שלך.", s:30, beat:{c:200,b:0.25}},
+  desc:"אופציה ניסיונית (פרק 16): מחקר יחיד מ-2024 מצא שפעימת 0.25Hz קיצרה את זמן ההגעה לשנת גלים איטיים בנמנומי יום. הבסיס צעיר ודל מזה של 3Hz — מוצג ככזה. אם 3Hz עובד לך, הישאר איתו.",
+  steps:[{ph:"מסגור", t:"זהו פרוטוקול ניסיוני: פעימה של רבע הרץ — גל אחד כל ארבע שניות. הראיות: מחקר יחיד, על נמנומי יום. שכב בתנוחת השינה שלך.", s:30, beat:{c:200,b:0.25}},
    {ph:"נשימה", t:"חמש נשימות איטיות. עם כל נשיפה — הרפה עוד שכבה.", s:45, br:1, beat:{c:200,b:0.25}},
    {ph:"שקיעה", t:"אין ספירה הפעם. רק הצליל האיטי, והכובד הנעים של הגוף. תן לכל גל לקחת אותך צעד פנימה. לילה טוב.", s:600, beat:{c:200,b:0.25}}]},
- {id:"edison", grp:"שינה וגבול-שינה", name:"תנומת אדיסון — שאלה בתפר", icon:"💡", ac:"var(--gold)", min:16, lvl:"C-1", beat:{c:200,b:3}, noWarm:1,
+ {id:"edison", grp:"שינה וגבול-שינה", name:"תנומת אדיסון — שאלה בתפר", icon:"💡", ac:"var(--gold)", min:16, lvl:"C-1", beat:null,
   ask:"מה השאלה שתיקח איתך אל סף השינה? נסח אותה במשפט אחד:",
-  desc:"שחזור פרוטוקול ההיפנגוגיה של אדיסון (פרק 18, מחקר 2021): כניסה ל-N1 עם שאלה מנוסחת מראש — והאצבע על המסך היא 'הכדור ביד'. כשהיא מרפה, הצליל מחזיר אותך לרשום מה עלה.",
-  steps:[{ph:"הכנה", t:"שב בכורסה או שכב בזווית — לא בתנוחת שינה מלאה. חזור בתוכך על השאלה שניסחת, פעם אחת, ואז הנח לה.", s:40, beat:{c:200,b:3}},
-   {ph:"הבקבוק הדיגיטלי", t:"הנח אצבע על העיגול שבמסך — והשאר אותה שם, ברפיון. עצום עיניים. תן לעצמך לשקוע. כשתחליק אל תוך השינה — האצבע תרפה מעצמה, והצליל יחזיר אותך.", s:720, hold:1, beat:{c:200,b:3}},
+  desc:"שחזור פרוטוקול ההיפנגוגיה של Lacaux ‏2021 (פרק 18): דקה אחת בשנת N1 שילשה את סיכויי התובנה — 83% מול 30% אצל מי שנשארו ערים. כניסה ל-N1 עם שאלה מנוסחת מראש — והאצבע על המסך היא 'הבקבוק ביד'. כמו במעבדה, ללא אודיו.",
+  steps:[{ph:"הכנה", t:"שב בכורסה או שכב בזווית — לא בתנוחת שינה מלאה. חזור בתוכך על השאלה שניסחת, פעם אחת, ואז הנח לה.", s:40},
+   {ph:"הבקבוק הדיגיטלי", t:"הנח אצבע על העיגול שבמסך — והשאר אותה שם, ברפיון. עצום עיניים. תן לעצמך לשקוע. כשתחליק אל תוך השינה — האצבע תרפה מעצמה, והצליל יחזיר אותך.", s:720, hold:1},
    {ph:"קציר", t:"חזרת מהתפר. מה היה שם ברגע האחרון — תמונה, מילה, רעיון? אמור אותו לעצמך עכשיו, ומיד בסיום — רשום אותו ביומן עם תיוג גבול-שינה. אלה הדקות שהמחקר מצא בהן את שיא היצירתיות.", s:60}]},
  {id:"nsdr11", grp:"שינה וגבול-שינה", name:"NSDR — מנוחה עמוקה ללא שינה · 11 דק'", icon:"🛌", ac:"var(--cyan)", min:11, lvl:"C-1", beat:null,
-  desc:"'התאום הראייתי' של Focus 10 (פרק 17): יוגה נידרה/NSDR — אותו מבנה של גוף-ישן-מוח-ער, עם גוף ראיות ניסויי משלו. ללא אודיו וללא טענות מנגנון — רק הפרוטוקול.",
+  desc:"'התאום הראייתי' של Focus 10 (פרק 17): יוגה נידרה/NSDR — אותו מבנה של גוף-ישן-מוח-ער. במדגם של 771 מתרגלים, 11 דקות ביום לאורך חודש שיפרו מתח, רווחה ושינה. ללא אודיו וללא טענות מנגנון — רק הפרוטוקול.",
   steps:[{ph:"התכוונות", t:"שכב על הגב, ידיים לצידי הגוף, כפות פתוחות. עצום עיניים. אמור לעצמך בשקט: בעשר הדקות הקרובות אני נשאר ער — והגוף ינוח כאילו ישן.", s:45},
    {ph:"נשיפה מוארכת", t:"שאף באף... ונשוף לאט מהפה, ארוך מהשאיפה. עוד ארבע נשימות כאלה. הנשיפה הארוכה היא המתג הפיזיולוגי של ההרפיה.", s:60, br:1, brSec:6},
    {ph:"סריקה · ראש וכתפיים", t:"הבא תשומת לב אל קצה הראש... המצח... העיניים... הלסת — הנח לה ליפול. הצוואר... הכתפיים — כבדות, שוקעות.", s:90},
@@ -1645,7 +1645,7 @@ const EXERCISES = [
    {ph:"מודעות פתוחה", t:"עכשיו הרחב את הקשב אל הגוף כולו בבת אחת — צורה אחת שקטה ונושמת. אם מחשבה עולה — תן לה לעבור. אתה ער; הגוף ישן.", s:180},
    {ph:"חזרה", t:"התחל להעמיק את הנשימה. הזז אצבעות ידיים ורגליים. מתח קלות... ופקח עיניים. שים לב לרמת האנרגיה — זה המדד של NSDR.", s:60}]},
  {id:"nsdr20", grp:"שינה וגבול-שינה", name:"NSDR — מנוחה עמוקה ללא שינה · 20 דק'", icon:"🛌", ac:"var(--cyan)", min:20, lvl:"C-1", beat:null,
-  desc:"הגרסה המלאה: סריקה איטית יותר, סבב שני של גוף-שלם, ושהייה ארוכה במודעות פתוחה. מתאימה במיוחד להשלמת שינה חסרה או אחרי לילה קצר.",
+  desc:"הגרסה המלאה: סריקה איטית יותר, סבב שני של גוף-שלם, ושהייה ארוכה במודעות פתוחה. ב-RCT במעבדת שינה (2021) שיפרה יוגה נידרה גם את שנת ה-N3 אצל סובלים מנדודי שינה.",
   steps:[{ph:"התכוונות", t:"שכב על הגב, ידיים לצידי הגוף, כפות פתוחות. עצום עיניים. אמור לעצמך: בעשרים הדקות הקרובות אני נשאר ער — והגוף ינוח עמוק משינה.", s:60},
    {ph:"נשיפה מוארכת", t:"שאף באף... ונשוף לאט מהפה, ארוך מהשאיפה. המשך כך, בקצב שלך. עם כל נשיפה — הגוף שוקע עוד קצת.", s:120, br:1, brSec:6},
    {ph:"סריקה · צד ימין", t:"תשומת לב אל כף יד ימין... אצבע אצבע... שורש כף היד... האמה... המרפק... הכתף. עכשיו כף רגל ימין... הקרסול... השוק... הברך... הירך. צד ימין כולו — כבד ורפוי.", s:180},
@@ -1655,21 +1655,22 @@ const EXERCISES = [
    {ph:"מודעות פתוחה", t:"שהה. בלי מושא, בלי משימה. ער בתוך גוף ישן. אם שקעת לרגע — זה בסדר; חזור בעדינות אל תחושת הגוף.", s:300},
    {ph:"חזרה", t:"העמק את הנשימה... הזז אצבעות... מתח את הגוף בנעימות... גלגל את הראש מעט... ופקח עיניים. קום לאט. שים לב לאנרגיה בשעה הקרובה.", s:90}]},
  {id:"sigh", grp:"כלים יומיים", name:"אנחה מחזורית — 5 דקות", icon:"😮‍💨", ac:"var(--green)", min:6, lvl:"C-1", beat:null,
-  desc:"תרגיל הנשימה עם הראיות הישירות החזקות ביותר (Balban 2023, פרק 17): שאיפה כפולה + נשיפה ארוכה, 5 דקות ביום — שיפר מצב רוח והוריד עוררות יותר ממדיטציה באותו ניסוי.",
+  desc:"תרגיל הנשימה עם הראיות הישירות החזקות ביותר (Balban 2023, פרק 17): שאיפה כפולה + נשיפה ארוכה, 5 דקות ביום למשך חודש — שיפר רגש חיובי יומי יותר ממדיטציית קשיבות והוריד את קצב הנשימה במנוחה.",
   steps:[{ph:"הכנה", t:"שב זקוף ונינוח. המבנה: שאיפה מהאף עד כמעט מלא — ואז שאיפה שנייה קצרה, 'עוד לגימה' שממלאת את הריאות עד הסוף — ונשיפה איטית וארוכה מהפה, עד ריק.", s:30},
    {ph:"סבב ראשון", t:"שאף... ועוד לגימה קצרה למעלה... ועכשיו נשוף לאט-לאט מהפה, ארוך כפול מהשאיפה. שוב: שאיפה... לגימה... נשיפה ארוכה. המשך בקצב שלך.", s:90},
    {ph:"תרגול רציף", t:"המשך את המחזור: שאיפה כפולה — נשיפה ארוכה. אם מסתחרר — חזור לנשימה רגילה לכמה נשימות והצטרף שוב. הנשיפה הארוכה היא שעושה את העבודה.", s:180},
    {ph:"סיום", t:"הרפה את הדפוס. שלוש נשימות רגילות. שים לב: קצב הלב, הכתפיים, המצב הכללי — לעומת לפני חמש דקות.", s:30}]},
- {id:"breathcal", grp:"היסודות", name:"כיול נשימה אישי — מציאת קצב התהודה", icon:"🎚️", ac:"var(--cyan)", min:7, lvl:"C-1", beat:null,
-  desc:"לכל אדם קצב תהודה משלו — בין 4.5 ל-6.5 נשימות בדקה (פרק 17). התרגיל מעביר אותך בין ארבעה קצבים; בחר את הנוח ביותר וקבע אותו בהגדרות — הוא יחול על כל רמזי הנשימה באפליקציה.",
+ {id:"breathcal", grp:"היסודות", name:"כיול נשימה אישי — מציאת קצב התהודה", icon:"🎚️", ac:"var(--cyan)", min:8, lvl:"C-1", beat:null,
+  desc:"לכל אדם קצב תהודה משלו — בין 4.5 ל-6.5 נשימות בדקה (פרק 17). התרגיל מעביר אותך בין חמישה קצבים לאורך הטווח המלא; בחר את הנוח ביותר וקבע אותו בהגדרות — הוא יחול על כל רמזי הנשימה באפליקציה.",
   steps:[{ph:"הכנה", t:"שב בנוחות. העיגול שבמסך ינחה: מתרחב בשאיפה, מתכווץ בנשיפה. עקוב אחריו בלי מאמץ — נחפש את הקצב שבו הנשימה מרגישה כמו נדנדה, לא כמו משימה.", s:25},
-   {ph:"קצב 1 · 5.0 נשימות/דקה", t:"נשום עם העיגול. איטי ורחב. שים לב: נוח? מאומץ?", s:72, br:1, brSec:6},
-   {ph:"קצב 2 · 5.5 נשימות/דקה", t:"מעט מהיר יותר. עקוב אחרי העיגול. איך זה בהשוואה לקודם?", s:66, br:1, brSec:5.45},
-   {ph:"קצב 3 · 6.0 נשימות/דקה", t:"עוד מעט מהר יותר. רוב האנשים נוחתים בין הקצב הזה לקודמים.", s:60, br:1, brSec:5},
-   {ph:"קצב 4 · 6.5 נשימות/דקה", t:"הקצב המהיר בטווח. האם הוא זורם — או כבר קצר מדי?", s:55, br:1, brSec:4.6},
+   {ph:"קצב 1 · 4.5 נשימות/דקה", t:"הקצב האיטי בטווח. נשום עם העיגול — רחב, עמוק. נוח, או איטי מדי עבורך?", s:80, br:1, brSec:6.67},
+   {ph:"קצב 2 · 5.0 נשימות/דקה", t:"נשום עם העיגול. איטי ורחב. שים לב: נוח? מאומץ?", s:72, br:1, brSec:6},
+   {ph:"קצב 3 · 5.5 נשימות/דקה", t:"מעט מהיר יותר. עקוב אחרי העיגול. איך זה בהשוואה לקודם?", s:66, br:1, brSec:5.45},
+   {ph:"קצב 4 · 6.0 נשימות/דקה", t:"עוד מעט מהר יותר. רוב האנשים נוחתים בין הקצב הזה לקודמים.", s:60, br:1, brSec:5},
+   {ph:"קצב 5 · 6.5 נשימות/דקה", t:"הקצב המהיר בטווח. האם הוא זורם — או כבר קצר מדי?", s:55, br:1, brSec:4.6},
    {ph:"בחירה", t:"איזה קצב הרגיש הכי טבעי — כזה שתוכל להמשיך בו רבע שעה בלי לחשוב? פתח את ההגדרות, קבע אותו במחוון 'קצב נשימה אישי' — ומעכשיו כל רמזי הנשימה באפליקציה ינועו בקצב שלך.", s:40}]},
  {id:"attn", grp:"כלים יומיים", name:"מצב קשב ולמידה — 15Hz", icon:"🎯", ac:"var(--rose)", min:12, lvl:"C-1", beat:{c:250,b:15}, noWarm:1,
-  desc:"הכיוון השני של המטא-אנליזה (פרק 16): פעימות בטא (15Hz+) נקשרו לשיפור זיכרון וקשב. אזהרה הפוכה מהרגיל: דווקא תטא איטי בזמן למידה עלול להזיק — לכן ללמידה משתמשים בפרוטוקול הזה, לא בתדרי ההרפיה.",
+  desc:"הכיוון השני של הספרות (פרק 16): בניסויים מבוקרים רק פעימות בטא — 15Hz ו-20Hz — שיפרו זיכרון עבודה וזיכרון ארוך-טווח, בעוד פעימת תטא בזמן למידה דווקא פגעה בו. לכן ללמידה משתמשים בפרוטוקול הזה, לא בתדרי ההרפיה. העדויות צעירות מאלה של 6Hz — וכך זה מוצג.",
   steps:[{ph:"מסגור", t:"זהו התרגול היחיד באפליקציה שבו העיניים נשארות פקוחות: הפעימה המהירה מיועדת ללוות עבודה, למידה או קריאה — לא מדיטציה. הכן את חומר העבודה שלך.", s:25, beat:{c:250,b:15}},
    {ph:"עבודה מלווה", t:"התחל לעבוד. הצליל ברקע, בעוצמה נמוכה — הוא לא אמור למשוך קשב אלא לייצב אותו. אם הוא מפריע — הנמך עוד.", s:600, beat:{c:250,b:15}},
    {ph:"סיום", t:"עצור לרגע. שים לב לאיכות המיקוד בעשר הדקות האחרונות לעומת הרגיל שלך — ורשום שורה ביומן. המדד האישי שלך שווה יותר מכל מטא-אנליזה.", s:35, beat:{c:250,b:15}}]},
@@ -2460,8 +2461,8 @@ const EN_STEPS = {
  "מכאן — אין הדרכה. רק הצליל, ואתה. תן למה שעולה — לעלות. אל תנווט, אל תשפוט, אל תיאחז. אם דבר לא קורה — גם זה בסדר גמור.": "From here there is no guidance. Only the sound, and you. Let whatever rises, rise. Do not steer, do not judge, do not hold on. If nothing happens, that is entirely fine as well.",
  "התחל לחזור בעדינות. אסוף את מה שחווית — תמונות, תחושות, מחשבות — כדי לרשום מיד ביומן. תיאור לפני פרשנות.": "Begin to return gently. Gather what you experienced, images, sensations, thoughts, so you can write it down immediately in your journal. Description before interpretation.",
  /* --- שלבים 2–3 של מפת הדרכים --- */
- "הפעימה מתחילה לבדה, לפני ההנחיות — כך מצאה המטא-אנליזה את האפקט החזק ביותר. עצום עיניים, הנח לצליל לעבוד. ההדרכה תגיע בעוד כשתי דקות וחצי; אפשר לדלג בכפתור.": "The beat begins on its own, before the guidance — this is where the meta-analysis found the strongest effect. Close your eyes and let the sound work. The guidance will arrive in about two and a half minutes; you may skip with the button.",
- "זהו פרוטוקול ניסיוני: פעימה של רבע הרץ — גל אחד כל ארבע שניות, איטי כמו גלי השינה העמוקה. הראיות עבורו מוקדמות. שכב בתנוחת השינה שלך.": "This is an experimental protocol: a quarter-hertz beat, one wave every four seconds, as slow as the waves of deep sleep themselves. The evidence for it is early. Lie in your sleeping position.",
+ "הפעימה מתחילה לבדה, לפני ההנחיות — במטא-אנליזה, חשיפה לפני המשימה ובמהלכה עלתה על חשיפה במהלכה בלבד. עצום עיניים, הנח לצליל לעבוד. ההדרכה תגיע בעוד כשתי דקות וחצי; אפשר לדלג בכפתור.": "The beat begins on its own, before the guidance — in the meta-analysis, exposure before and during the task outperformed exposure during it alone. Close your eyes and let the sound work. The guidance will arrive in about two and a half minutes; you may skip with the button.",
+ "זהו פרוטוקול ניסיוני: פעימה של רבע הרץ — גל אחד כל ארבע שניות. הראיות: מחקר יחיד, על נמנומי יום. שכב בתנוחת השינה שלך.": "This is an experimental protocol: a quarter-hertz beat, one wave every four seconds. The evidence: a single study, on daytime naps. Lie in your sleeping position.",
  "חמש נשימות איטיות. עם כל נשיפה — הרפה עוד שכבה.": "Five slow breaths. With each exhale, release another layer.",
  "אין ספירה הפעם. רק הצליל האיטי, והכובד הנעים של הגוף. תן לכל גל לקחת אותך צעד פנימה. לילה טוב.": "No counting this time. Only the slow sound, and the pleasant heaviness of the body. Let each wave take you one step inward. Good night.",
  "שב בכורסה או שכב בזווית — לא בתנוחת שינה מלאה. חזור בתוכך על השאלה שניסחת, פעם אחת, ואז הנח לה.": "Sit in an armchair or recline at an angle — not in a full sleeping position. Repeat the question you formulated once within yourself, and then let it go.",
@@ -2487,6 +2488,7 @@ const EN_STEPS = {
  "המשך את המחזור: שאיפה כפולה — נשיפה ארוכה. אם מסתחרר — חזור לנשימה רגילה לכמה נשימות והצטרף שוב. הנשיפה הארוכה היא שעושה את העבודה.": "Continue the cycle: double inhale, long exhale. If you feel dizzy, return to normal breathing for a few breaths and rejoin. It is the long exhale that does the work.",
  "הרפה את הדפוס. שלוש נשימות רגילות. שים לב: קצב הלב, הכתפיים, המצב הכללי — לעומת לפני חמש דקות.": "Release the pattern. Three normal breaths. Notice: the heart rate, the shoulders, your overall state — compared with five minutes ago.",
  "שב בנוחות. העיגול שבמסך ינחה: מתרחב בשאיפה, מתכווץ בנשיפה. עקוב אחריו בלי מאמץ — נחפש את הקצב שבו הנשימה מרגישה כמו נדנדה, לא כמו משימה.": "Sit comfortably. The circle on the screen will guide you: expanding on the inhale, contracting on the exhale. Follow it without effort. We are looking for the pace at which breathing feels like a swing, not a task.",
+ "הקצב האיטי בטווח. נשום עם העיגול — רחב, עמוק. נוח, או איטי מדי עבורך?": "The slowest pace in the range. Breathe with the circle — wide, deep. Comfortable, or too slow for you?",
  "נשום עם העיגול. איטי ורחב. שים לב: נוח? מאומץ?": "Breathe with the circle. Slow and wide. Notice: comfortable? Strained?",
  "מעט מהיר יותר. עקוב אחרי העיגול. איך זה בהשוואה לקודם?": "A little faster. Follow the circle. How does it compare with the previous pace?",
  "עוד מעט מהר יותר. רוב האנשים נוחתים בין הקצב הזה לקודמים.": "A little faster still. Most people land between this pace and the previous ones.",
@@ -2501,10 +2503,10 @@ const EN_STEPS = {
 const TIPS = {
  rbx:["ישיבה או שכיבה — עיניים עצומות","נשיפה איטית דרך הפה, כמו כיבוי נר — כ-6 נשימות לדקה","הרגש את הרטט בחזה ובראש בנשיפה — זו ה'תהודה'","ללא אודיו — התרגיל עומד בפני עצמו","אם מסתחרר — האט את הקצב או חזור לנשימה רגילה"],
  sleep025:["פרוטוקול ניסיוני — הראיות מוקדמות ודלות מ-3Hz","אוזניות דק אם נוח; אחרת הפעל מצב רמקולים בהגדרות","אם 3Hz עובד לך — אין סיבה להחליף","עוצמה נמוכה מאוד — הצליל צריך כמעט להיעלם"],
- edison:["ישיבה בכורסה או שכיבה בזווית — לא תנוחת שינה מלאה","נסח את השאלה לפני, במשפט אחד","האצבע רפויה על העיגול — בלי להחזיק בכוח","ההרפיה של האצבע היא הסיגנל: רשום מיד מה עלה","אחר הצהריים מוקדם — הזמן הטבעי של התנומה"],
+ edison:["ישיבה בכורסה או שכיבה בזווית — לא תנוחת שינה מלאה","נסח את השאלה לפני, במשפט אחד","האצבע רפויה על העיגול — בלי להחזיק בכוח","דקה ב-N1 שילשה תובנה (83% מול 30%) — והאפקט נעלם בצלילה ל-N2; הבקבוק שומר אותך בתפר","ההרפיה של האצבע היא הסיגנל: רשום מיד מה עלה","אחר הצהריים מוקדם — הזמן הטבעי של התנומה"],
  nsdr11:["שכיבה על הגב, כפות פתוחות","העיקרון: ער בכוונה, בגוף שנרדם","אין 'להצליח' — גם סריקה חלקית עובדת","מצוין אחרי לילה קצר או באמצע יום עמוס"],
  nsdr20:["הגרסה המלאה — עדיפה כשיש זמן אמיתי","אם נרדמת — זה מידע, לא כישלון; רשום ביומן","השווה את האנרגיה אחרי מול תנומה רגילה"],
- sigh:["הראיות הישירות החזקות ביותר מבין תרגילי הנשימה (Balban 2023)","המפתח: נשיפה ארוכה כפליים מהשאיפה","5 דקות ביום, עדיף באותה שעה","סחרחורת קלה = להאט, לא להפסיק את התרגול לתמיד"],
+ sigh:["הראיות הישירות החזקות ביותר מבין תרגילי הנשימה (Balban 2023)","המפתח: נשיפה ארוכה כפליים מהשאיפה","5 דקות ביום, עדיף באותה שעה","גילוי נאות מהניסוי עצמו: לא נמצא שינוי ב-HRV במנוחה — המדד הוא ההרגשה, לא הגרף","סחרחורת קלה = להאט, לא להפסיק את התרגול לתמיד"],
  breathcal:["חד-פעמי — ואז קובעים את הקצב בהגדרות","הקצב הנכון מרגיש כמו נדנדה, לא כמו משימה","אפשר לחזור ולכייל שוב אחרי חודש של תרגול"],
  attn:["עיניים פקוחות — זה תרגול עבודה, לא מדיטציה","עוצמה נמוכה: הצליל מייצב קשב, לא מושך אותו","לא לפני שינה — 15Hz הוא תדר עוררות","ללמידה אל תשתמש בתדרי ההרפיה — תטא בזמן קידוד עלול להזיק"],
  tuning:["זמזום בקול — עדיף מקום פרטי","עיניים עצומות · ישיבה או שכיבה","כוון לרטט בראש — לא לצליל 'יפה'","חוליית החיבור בין הנשימה לכניסה ל-Focus 10"],
@@ -2822,7 +2824,7 @@ const HTML_EN = {
  "a301": "Sleep-threshold entry (hypnagogia)",
  "a302": "Dream",
  "mx.title": "🔬 Measurement — the research toolkit (chapter 19)",
- "mx.lead": "Three tools from the home measurement protocol: PVT — a reaction-time test, the only objective measure in the app; TMS — a state-mindfulness questionnaire after a session (Lau 2006, published in full); and MODTAS — a one-time absorption measurement for expectation framing. Goodhart's warning from the chapter: measurement serves the question \"should I continue?\" — not the other way around. STAI-6 and PCI will be added only if licensing is settled; until then the existing 1–10 scales fill that role.",
+ "mx.lead": "Three tools from the home measurement protocol: PVT — a reaction-time test, the only objective measure in the app; TMS — a state-mindfulness questionnaire after a session (Lau 2006, published in full); and MODTAS — a one-time absorption measurement for expectation framing. Measure RMSSD two or three times a week, not every session — so measurement does not become an anxious ritual. Goodhart's warning from the chapter: measurement serves the question \"should I continue?\" — not the other way around. STAI-6 and PCI will be added only if licensing is settled; until then the existing 1–10 scales fill that role.",
  "mx.hrvB": "RMSSD before (ms) — if measured",
  "mx.hrvA": "RMSSD after (ms)",
  "mx.hrvB2": "RMSSD before (ms) — manual entry from any HRV app",
@@ -3019,17 +3021,17 @@ const UI_EN = {
  "כניסה לשינה — 3Hz": "Entering sleep — 3Hz",
  "הכלי המקורי: 5 נשימות עמוקות וספירה 1–20 — 'לפני שתגיע ל-20, תיכנס לשינה טבעית ורגועה'. הפעימה כוילה ל-3Hz — התדר שנמצא במחקר כמאריך שנת N3 עמוקה (פרק 16).": "The original tool: 5 deep breaths and counting 1–20 — 'before you reach 20, you will enter natural, restful sleep'. The beat is calibrated to 3Hz — the frequency research found to extend deep N3 sleep (chapter 16).",
  "שינה עמוקה — 0.25Hz ניסיוני": "Deep sleep — 0.25Hz experimental",
- "אופציה ניסיונית (פרק 16): פעימה איטית במיוחד בקצב גלי השינה העמוקה עצמם. הבסיס המחקרי צעיר ודל מזה של 3Hz — מוצג ככזה. אם 3Hz עובד לך, הישאר איתו.": "An experimental option (chapter 16): an extremely slow beat at the pace of the deep-sleep waves themselves. Its research base is younger and thinner than 3Hz — and it is presented as such. If 3Hz works for you, stay with it.",
+ "אופציה ניסיונית (פרק 16): מחקר יחיד מ-2024 מצא שפעימת 0.25Hz קיצרה את זמן ההגעה לשנת גלים איטיים בנמנומי יום. הבסיס צעיר ודל מזה של 3Hz — מוצג ככזה. אם 3Hz עובד לך, הישאר איתו.": "An experimental option (chapter 16): a single 2024 study found that a 0.25Hz beat shortened the time to reach slow-wave sleep in daytime naps. The base is younger and thinner than 3Hz — and presented as such. If 3Hz works for you, stay with it.",
  "מסגור": "Framing",
  "שקיעה": "Sinking",
  "תנומת אדיסון — שאלה בתפר": "The Edison nap — a question at the threshold",
- "שחזור פרוטוקול ההיפנגוגיה של אדיסון (פרק 18, מחקר 2021): כניסה ל-N1 עם שאלה מנוסחת מראש — והאצבע על המסך היא 'הכדור ביד'. כשהיא מרפה, הצליל מחזיר אותך לרשום מה עלה.": "A reconstruction of Edison's hypnagogia protocol (chapter 18, 2021 study): entering N1 with a pre-formulated question — and the finger on the screen is 'the ball in the hand'. When it releases, the sound brings you back to write down what arose.",
+ "שחזור פרוטוקול ההיפנגוגיה של Lacaux ‏2021 (פרק 18): דקה אחת בשנת N1 שילשה את סיכויי התובנה — 83% מול 30% אצל מי שנשארו ערים. כניסה ל-N1 עם שאלה מנוסחת מראש — והאצבע על המסך היא 'הבקבוק ביד'. כמו במעבדה, ללא אודיו.": "A reconstruction of the Lacaux 2021 hypnagogia protocol (chapter 18): one minute of N1 sleep tripled the odds of insight — 83% versus 30% for those who stayed awake. Entering N1 with a pre-formulated question — and the finger on the screen is 'the bottle in the hand'. As in the lab, with no audio.",
  "הבקבוק הדיגיטלי": "The digital bottle",
  "קציר": "Harvest",
  "NSDR — מנוחה עמוקה ללא שינה · 11 דק'": "NSDR — deep rest without sleep · 11 min",
- "'התאום הראייתי' של Focus 10 (פרק 17): יוגה נידרה/NSDR — אותו מבנה של גוף-ישן-מוח-ער, עם גוף ראיות ניסויי משלו. ללא אודיו וללא טענות מנגנון — רק הפרוטוקול.": "The 'evidential twin' of Focus 10 (chapter 17): yoga nidra / NSDR — the same body-asleep-mind-awake structure, with an experimental evidence base of its own. No audio and no mechanism claims — only the protocol.",
+ "'התאום הראייתי' של Focus 10 (פרק 17): יוגה נידרה/NSDR — אותו מבנה של גוף-ישן-מוח-ער. במדגם של 771 מתרגלים, 11 דקות ביום לאורך חודש שיפרו מתח, רווחה ושינה. ללא אודיו וללא טענות מנגנון — רק הפרוטוקול.": "The 'evidential twin' of Focus 10 (chapter 17): yoga nidra / NSDR — the same body-asleep-mind-awake structure. In a sample of 771 practitioners, 11 minutes a day for a month improved stress, well-being and sleep. No audio and no mechanism claims — only the protocol.",
  "NSDR — מנוחה עמוקה ללא שינה · 20 דק'": "NSDR — deep rest without sleep · 20 min",
- "הגרסה המלאה: סריקה איטית יותר, סבב שני של גוף-שלם, ושהייה ארוכה במודעות פתוחה. מתאימה במיוחד להשלמת שינה חסרה או אחרי לילה קצר.": "The full version: a slower scan, a second whole-body pass, and a long stay in open awareness. Especially suited to catching up on missing sleep or after a short night.",
+ "הגרסה המלאה: סריקה איטית יותר, סבב שני של גוף-שלם, ושהייה ארוכה במודעות פתוחה. ב-RCT במעבדת שינה (2021) שיפרה יוגה נידרה גם את שנת ה-N3 אצל סובלים מנדודי שינה.": "The full version: a slower scan, a second whole-body pass, and a long stay in open awareness. In a sleep-lab RCT (2021), yoga nidra also improved N3 sleep in people with chronic insomnia.",
  "התכוונות": "Setting intention",
  "נשיפה מוארכת": "Extended exhale",
  "סריקה · ראש וכתפיים": "Scan · head and shoulders",
@@ -3041,18 +3043,19 @@ const UI_EN = {
  "גוף שלם · גל שני": "Whole body · second wave",
  "מודעות פתוחה": "Open awareness",
  "אנחה מחזורית — 5 דקות": "Cyclic sighing — 5 minutes",
- "תרגיל הנשימה עם הראיות הישירות החזקות ביותר (Balban 2023, פרק 17): שאיפה כפולה + נשיפה ארוכה, 5 דקות ביום — שיפר מצב רוח והוריד עוררות יותר ממדיטציה באותו ניסוי.": "The breathing exercise with the strongest direct evidence (Balban 2023, chapter 17): a double inhale + long exhale, 5 minutes a day — improved mood and lowered arousal more than meditation in the same trial.",
+ "תרגיל הנשימה עם הראיות הישירות החזקות ביותר (Balban 2023, פרק 17): שאיפה כפולה + נשיפה ארוכה, 5 דקות ביום למשך חודש — שיפר רגש חיובי יומי יותר ממדיטציית קשיבות והוריד את קצב הנשימה במנוחה.": "The breathing exercise with the strongest direct evidence (Balban 2023, chapter 17): a double inhale + long exhale, 5 minutes a day for a month — improved daily positive affect more than mindfulness meditation and lowered resting respiratory rate.",
  "סבב ראשון": "First round",
  "תרגול רציף": "Continuous practice",
  "כיול נשימה אישי — מציאת קצב התהודה": "Personal breath calibration — finding your resonance pace",
- "לכל אדם קצב תהודה משלו — בין 4.5 ל-6.5 נשימות בדקה (פרק 17). התרגיל מעביר אותך בין ארבעה קצבים; בחר את הנוח ביותר וקבע אותו בהגדרות — הוא יחול על כל רמזי הנשימה באפליקציה.": "Everyone has a resonance pace of their own — between 4.5 and 6.5 breaths per minute (chapter 17). This exercise moves you through four paces; choose the most comfortable and set it in the settings — it will apply to every breathing cue in the app.",
- "קצב 1 · 5.0 נשימות/דקה": "Pace 1 · 5.0 breaths/min",
- "קצב 2 · 5.5 נשימות/דקה": "Pace 2 · 5.5 breaths/min",
- "קצב 3 · 6.0 נשימות/דקה": "Pace 3 · 6.0 breaths/min",
- "קצב 4 · 6.5 נשימות/דקה": "Pace 4 · 6.5 breaths/min",
+ "לכל אדם קצב תהודה משלו — בין 4.5 ל-6.5 נשימות בדקה (פרק 17). התרגיל מעביר אותך בין חמישה קצבים לאורך הטווח המלא; בחר את הנוח ביותר וקבע אותו בהגדרות — הוא יחול על כל רמזי הנשימה באפליקציה.": "Everyone has a resonance pace of their own — between 4.5 and 6.5 breaths per minute (chapter 17). This exercise moves you through five paces spanning the full range; choose the most comfortable and set it in the settings — it will apply to every breathing cue in the app.",
+ "קצב 1 · 4.5 נשימות/דקה": "Pace 1 · 4.5 breaths/min",
+ "קצב 2 · 5.0 נשימות/דקה": "Pace 2 · 5.0 breaths/min",
+ "קצב 3 · 5.5 נשימות/דקה": "Pace 3 · 5.5 breaths/min",
+ "קצב 4 · 6.0 נשימות/דקה": "Pace 4 · 6.0 breaths/min",
+ "קצב 5 · 6.5 נשימות/דקה": "Pace 5 · 6.5 breaths/min",
  "בחירה": "Choosing",
  "מצב קשב ולמידה — 15Hz": "Attention and learning mode — 15Hz",
- "הכיוון השני של המטא-אנליזה (פרק 16): פעימות בטא (15Hz+) נקשרו לשיפור זיכרון וקשב. אזהרה הפוכה מהרגיל: דווקא תטא איטי בזמן למידה עלול להזיק — לכן ללמידה משתמשים בפרוטוקול הזה, לא בתדרי ההרפיה.": "The meta-analysis's other direction (chapter 16): beta beats (15Hz+) were linked to improved memory and attention. A warning that is the reverse of the usual: slow theta during learning may actually harm — so for learning use this protocol, not the relaxation frequencies.",
+ "הכיוון השני של הספרות (פרק 16): בניסויים מבוקרים רק פעימות בטא — 15Hz ו-20Hz — שיפרו זיכרון עבודה וזיכרון ארוך-טווח, בעוד פעימת תטא בזמן למידה דווקא פגעה בו. לכן ללמידה משתמשים בפרוטוקול הזה, לא בתדרי ההרפיה. העדויות צעירות מאלה של 6Hz — וכך זה מוצג.": "The literature's other direction (chapter 16): in controlled experiments only beta beats — 15Hz and 20Hz — improved working and long-term memory, while a theta beat during learning actually harmed it. So for learning use this protocol, not the relaxation frequencies. The evidence is younger than for 6Hz — and presented as such.",
  "עבודה מלווה": "Accompanied work",
  "חימום תדר": "Frequency warm-up",
  "פרוטוקול ניסיוני — הראיות מוקדמות ודלות מ-3Hz": "An experimental protocol — the evidence is early and thinner than 3Hz",
@@ -3063,6 +3066,8 @@ const UI_EN = {
  "נסח את השאלה לפני, במשפט אחד": "Formulate the question beforehand, in one sentence",
  "האצבע רפויה על העיגול — בלי להחזיק בכוח": "The finger rests loosely on the circle — no gripping",
  "ההרפיה של האצבע היא הסיגנל: רשום מיד מה עלה": "The finger releasing is the signal: write down immediately what arose",
+ "דקה ב-N1 שילשה תובנה (83% מול 30%) — והאפקט נעלם בצלילה ל-N2; הבקבוק שומר אותך בתפר": "One minute of N1 tripled insight (83% vs 30%) — and the effect vanished on sinking into N2; the bottle keeps you at the threshold",
+ "גילוי נאות מהניסוי עצמו: לא נמצא שינוי ב-HRV במנוחה — המדד הוא ההרגשה, לא הגרף": "Full disclosure from the trial itself: no change in resting HRV was found — the measure is how you feel, not the graph",
  "אחר הצהריים מוקדם — הזמן הטבעי של התנומה": "Early afternoon — the natural time for the nap",
  "שכיבה על הגב, כפות פתוחות": "Lying on the back, palms open",
  "העיקרון: ער בכוונה, בגוף שנרדם": "The principle: deliberately awake, in a body falling asleep",
@@ -4371,7 +4376,7 @@ const player = {
     /* חימום תדר (שלב 2.1, פרק 16): הפעימה לבדה 2.5 דקות לפני ההנחיות — לפני+במהלך עדיף מבמהלך בלבד.
        לא בתרגילי שינה (הם קצרים ומטרתם הירדמות) ולא בתרגילים ללא תדר. אפשר לדלג עם "השלב הבא". */
     if(ex.beat && !ex.noWarm && audioEng.warmup())
-      this.steps.unshift({ph:"חימום תדר", t:"הפעימה מתחילה לבדה, לפני ההנחיות — כך מצאה המטא-אנליזה את האפקט החזק ביותר. עצום עיניים, הנח לצליל לעבוד. ההדרכה תגיע בעוד כשתי דקות וחצי; אפשר לדלג בכפתור.", s:150, beat:ex.beat});
+      this.steps.unshift({ph:"חימום תדר", t:"הפעימה מתחילה לבדה, לפני ההנחיות — במטא-אנליזה, חשיפה לפני המשימה ובמהלכה עלתה על חשיפה במהלכה בלבד. עצום עיניים, הנח לצליל לעבוד. ההדרכה תגיע בעוד כשתי דקות וחצי; אפשר לדלג בכפתור.", s:150, beat:ex.beat});
     this.exName = ex.name; this.exMin = ex.min; this.exLvl = ex.lvl; this.idx=0; this.paused=false; this.state='ready';
     document.getElementById('player').classList.add('on');
     this.pane('pReady');
@@ -5183,7 +5188,7 @@ const measure = {
     const L=(he,en)=>this.L(he,en);
     const pvt=this.pvtList();
     pc.innerHTML = `<div class="eyebrow">⚡ PVT</div>
-      <p class="muted" style="font-size:.84rem;margin:6px 0 10px">${L('מבחן זמן-תגובה — המדד האובייקטיבי היחיד כאן. בבוקר, לאורך תקופת תרגול.','A reaction-time test — the only objective measure here. Mornings, across a practice period.')}</p>
+      <p class="muted" style="font-size:.84rem;margin:6px 0 10px">${L('מבחן זמן-תגובה — המדד האובייקטיבי היחיד כאן, רגיש לחסך שינה וחסין לאפקט למידה. בבוקר, לאורך תקופת תרגול.','A reaction-time test — the only objective measure here, sensitive to sleep debt and resistant to practice effects. Mornings, across a practice period.')}</p>
       ${pvt.length?`<p style="font-size:.92rem;margin-bottom:8px"><b style="color:var(--cyan)">${pvt[0].med}ms</b> <span class="faint">· ${pvt[0].date} · ${pvt.length} ${L('מדידות','tests')}</span></p>`:''}
       ${this.spark(pvt.slice(0,20).reverse().map(e=>e.med), '#5ee0ce')}
       <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
@@ -5273,7 +5278,7 @@ window.addEventListener('keydown', e=>{ if(e.key==='Escape' && document.getEleme
 })();
 
 /* ---------- גרסה ורענון כפוי ---------- */
-const APP_VERSION = '2026.08.11-b26';
+const APP_VERSION = '2026.08.11-b27';
 (function(){
   const set = ()=>{ const el=document.getElementById('appVer'); if(el) el.textContent = APP_VERSION; };
   set(); setTimeout(set, 300);
