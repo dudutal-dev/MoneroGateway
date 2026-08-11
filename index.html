@@ -3019,6 +3019,21 @@ const HTML_EN = {
 
 const UI_EN = {
  /* --- שלבים 2–3 של מפת הדרכים: תרגילים, קבוצה, שלבים וטיפים --- */
+ "שבוע ההרחבה · מהמחקר אל הכלים (רשות)": "The extension week · from the research to the tools (optional)",
+ "כיול נשימה אישי + בסיס PVT": "Personal breath calibration + PVT baseline",
+ "מצא את קצב התהודה שלך (4.5–6.5 נשימות/דקה, פרק 17) וקבע אותו בהגדרות. לפני כן, בבוקר: הרץ PVT ראשון במסך הניתוח — זה קו הבסיס האובייקטיבי שלך לשבוע (פרק 19).": "Find your resonance pace (4.5–6.5 breaths/min, chapter 17) and set it in the settings. Before that, in the morning: run your first PVT on the analysis screen — your objective baseline for the week (chapter 19).",
+ "אנחה מחזורית": "Cyclic sighing",
+ "5 דקות: שאיפה כפולה + נשיפה ארוכה (Balban 2023). התרגיל עם הראיות הישירות החזקות ביותר — נסה אותו יום-יום השבוע, באותה שעה.": "5 minutes: double inhale + long exhale (Balban 2023). The exercise with the strongest direct evidence — try it daily this week, at the same hour.",
+ "NSDR — התאום הראייתי": "NSDR — the evidential twin",
+ "11 דקות של מנוחה עמוקה ללא שינה. אותו מבנה כמו Focus 10 — בלי אודיו ובלי מסגור. השווה ביומן: איך זה הרגיש לעומת F-10 שאתה מכיר?": "11 minutes of deep rest without sleep. The same structure as Focus 10 — no audio, no framing. Compare in the journal: how did it feel next to the F-10 you know?",
+ "מצב קשב 15Hz": "15Hz attention mode",
+ "הפעם בעיניים פקוחות, בשעת עבודה או למידה — לא לפני שינה. זכור: ללמידה לא משתמשים בתדרי ההרפיה (פרק 16). רשום שורה על איכות המיקוד.": "This time with eyes open, during work or study — not before sleep. Remember: for learning, do not use the relaxation frequencies (chapter 16). Write one line on the quality of your focus.",
+ "תנומת אדיסון": "The Edison nap",
+ "אחר צהריים מוקדם. נסח שאלה, אצבע על העיגול, ותן ל-N1 לעבוד (83% מול 30%, פרק 18). תייג את הרשומה ביומן כגבול-שינה.": "Early afternoon. Formulate a question, finger on the circle, and let N1 do its work (83% vs 30%, chapter 18). Tag the journal entry as sleep-threshold.",
+ "פרוטוקול השינה": "The sleep protocol",
+ "הערב: כניסה לשינה עם 3Hz — התדר שנקשר להארכת N3 (פרק 16). מחר ביומן השתמש בשדה המשודרג: ער / בתפר / נרדמתי. מתקדמים: נסו את 0.25Hz הניסיוני.": "Tonight: enter sleep with 3Hz — the frequency linked to longer N3 (chapter 16). Tomorrow, use the upgraded journal field: awake / at the threshold / fell asleep. Advanced: try the experimental 0.25Hz.",
+ "NSDR ארוך + סיכום ומדידה": "Long NSDR + summary and measurement",
+ "20 דקות NSDR, ואחריהן: שאלון TMS על הסשן, PVT שני להשוואה מול יום 31 — והחלטה מחודשת על מבנה ההמשך, הפעם עם הכלים החדשים בארגז.": "20 minutes of NSDR, then: a TMS questionnaire on the session, a second PVT to compare with day 31 — and a renewed decision on what comes next, this time with the new tools in the kit.",
  "שינה וגבול-שינה": "Sleep and the sleep threshold",
  "כניסה לשינה — 3Hz": "Entering sleep — 3Hz",
  "הכלי המקורי: 5 נשימות עמוקות וספירה 1–20 — 'לפני שתגיע ל-20, תיכנס לשינה טבעית ורגועה'. הפעימה כוילה ל-3Hz — התדר שנמצא במחקר כמאריך שנת N3 עמוקה (פרק 16).": "The original tool: 5 deep breaths and counting 1–20 — 'before you reach 20, you will enter natural, restful sleep'. The beat is calibrated to 3Hz — the frequency research found to extend deep N3 sleep (chapter 16).",
@@ -3459,7 +3474,7 @@ const UI_EN = {
  "מפגש חופשי": "Free session",
  "בחר מהספרייה את התרגיל שהכי עבד עבורך — והעמק בו.": "Choose from the library the exercise that worked best for you — and go deeper into it.",
  "סקירה מלאה": "Full review",
- "קרא את כל היומן מההתחלה. כתוב סיכום. החלט על ההמשך: מחזור נוסף, תחזוקה — או עצירה. גם עצירה היא תשובה לגיטימית.": "Read the whole journal from the beginning. Write a summary. Decide how to continue: another cycle, maintenance — or stopping. Stopping is a legitimate answer too."
+ "קרא את כל היומן מההתחלה. כתוב סיכום. החלט על ההמשך: מחזור נוסף, תחזוקה, שבוע ההרחבה שלמטה — או עצירה. גם עצירה היא תשובה לגיטימית.": "Read the whole journal from the beginning. Write a summary. Decide how to continue: another cycle, maintenance —, the extension week below, or stopping. Stopping is a legitimate answer too."
 };
 /* טקסטי ההנחיה המלאים משמשים גם להצגה על המסך במצב אנגלית */
 try{ if(typeof EN_STEPS !== 'undefined') Object.assign(UI_EN, EN_STEPS); }catch(e){}
@@ -3540,8 +3555,8 @@ Object.assign(UI_EN, {
  "ההתקדמות שלך": "Your progress",
  "התחל את המסע ←": "Begin the journey →",
  "המסע הושלם 🎉": "Journey complete 🎉",
- "30 יום · 4 שבועות · צעד אחד ביום": "30 days · 4 weeks · one step a day",
- "שבוע 1 — הכנה ויסודות · שבוע 2 — Focus 10 לעומק · שבוע 3 — Focus 12 והרחבה · שבוע 4 — אינטגרציה. זמן קבוע ביום (עדיף בוקר), 20–35 דקות, ויומן אחרי כל מפגש — שלוש שורות מספיקות.": "Week 1 — preparation and foundations · Week 2 — Focus 10 in depth · Week 3 — Focus 12 and expansion · Week 4 — integration. A fixed time each day (mornings are best), 20–35 minutes, and a journal entry after every session — three lines are enough.",
+ "30 יום · 4 שבועות · צעד אחד ביום · + שבוע הרחבה": "30 days · 4 weeks · one step a day · + an extension week",
+ "שבוע 1 — הכנה ויסודות · שבוע 2 — Focus 10 לעומק · שבוע 3 — Focus 12 והרחבה · שבוע 4 — אינטגרציה · ולסיום, רשות: שבוע ההרחבה — הכלים החדשים מפרקי המחקר 16–19. זמן קבוע ביום (עדיף בוקר), 20–35 דקות, ויומן אחרי כל מפגש — שלוש שורות מספיקות.": "Week 1 — preparation and foundations · Week 2 — Focus 10 in depth · Week 3 — Focus 12 and expansion · Week 4 — integration · and finally, optional: the extension week — the new tools from research chapters 16–19. A fixed time each day (mornings are best), 20–35 minutes, and a journal entry after every session — three lines are enough.",
  "שלוש אפשרויות סבירות מהספר:": "Three reasonable options from the book:",
  "מחזור נוסף": "Another cycle",
  "תחזוקה": "Maintenance",
@@ -3595,6 +3610,8 @@ const UI_PATTERNS = [
  ["^שבוע (\\d+) · (.+)$", "Week $1 · $2"],
  ["^יום (\\d+) · (.+)$", "Day $1 · $2"],
  ["^היום הבא: יום (\\d+)$", "Next: day $1"],
+ ["^שבוע ההרחבה · יום (\\d+)$", "Extension week · day $1"],
+ ["^\\+ הרחבה (\\d+)/7$", "+ extension $1/7"],
  ["^~(\\d+) דק'$", "~$1 min"],
  ["^(\\d+) דק'$", "$1 min"],
  ["^שלב (\\d+)/(\\d+)$", "step $1/$2"],
@@ -3693,6 +3710,7 @@ const i18n = {
       [/^Week (\d+) · (.+)$/, (m)=>`שבוע ${m[1]} · ${this.revLookup(m[2].trim()) || m[2]}`],
       [/^Day (\d+) · (.+)$/, (m)=>`יום ${m[1]} · ${this.revLookup(m[2].trim()) || m[2]}`],
       [/^Next: day (\d+)$/, (m)=>`היום הבא: יום ${m[1]}`],
+      [/^Extension week · day (\d+)$/, (m)=>`שבוע ההרחבה · יום ${m[1]}`],
       [/^~(\d+) min$/, (m)=>`~${m[1]} דק'`],
       [/^(\d+) min$/, (m)=>`${m[1]} דק'`],
       [/^step (\d+)\/(\d+)$/, (m)=>`שלב ${m[1]}/${m[2]}`],
@@ -4504,7 +4522,7 @@ const player = {
       this.state='done';
       /* תיוג יום המסע — לפני הסימון האוטומטי */
       let jd=null; try{ const d=journey.data(); const nx=journey.nextDay();
-        if(d.start && nx<=30){ const info=JOURNEY_WEEKS.flatMap(w=>w.days).find(x=>x.d===nx);
+        if(d.start && nx<=37){ const info=JOURNEY_WEEKS.flatMap(w=>w.days).find(x=>x.d===nx);
           if(info && info.x===this.curExId) jd=nx; } }catch(e){}
       this.pendingJd = jd;
       daily.autoMark(); journey.autoMark(this.curExId);
@@ -4656,19 +4674,28 @@ const JOURNEY_WEEKS = [
   {d:27, t:"פתרון בעיות שני", x:"prob", note:"שאלה אחרת. השווה ביומן לתוצאה של יום 19."},
   {d:28, t:"Free Flow שני", x:"flow", note:"ארוך יותר — 30 דקות. סמוך על המבנה שבנית."},
   {d:29, t:"מפגש חופשי", x:null, act:"lib", note:"בחר מהספרייה את התרגיל שהכי עבד עבורך — והעמק בו."},
-  {d:30, t:"סקירה מלאה", x:null, act:"journal", note:"קרא את כל היומן מההתחלה. כתוב סיכום. החלט על ההמשך: מחזור נוסף, תחזוקה — או עצירה. גם עצירה היא תשובה לגיטימית."}]},
+  {d:30, t:"סקירה מלאה", x:null, act:"journal", note:"קרא את כל היומן מההתחלה. כתוב סיכום. החלט על ההמשך: מחזור נוסף, תחזוקה, שבוע ההרחבה שלמטה — או עצירה. גם עצירה היא תשובה לגיטימית."}]},
+ /* שבוע ההרחבה — רשות, אחרי הליבה: הכלים החדשים מפרקי ההרחבה 16–19, יום לכלי */
+ {n:5, name:"שבוע ההרחבה · מהמחקר אל הכלים (רשות)", c:"var(--gold)", days:[
+  {d:31, t:"כיול נשימה אישי + בסיס PVT", x:"breathcal", note:"מצא את קצב התהודה שלך (4.5–6.5 נשימות/דקה, פרק 17) וקבע אותו בהגדרות. לפני כן, בבוקר: הרץ PVT ראשון במסך הניתוח — זה קו הבסיס האובייקטיבי שלך לשבוע (פרק 19)."},
+  {d:32, t:"אנחה מחזורית", x:"sigh", note:"5 דקות: שאיפה כפולה + נשיפה ארוכה (Balban 2023). התרגיל עם הראיות הישירות החזקות ביותר — נסה אותו יום-יום השבוע, באותה שעה."},
+  {d:33, t:"NSDR — התאום הראייתי", x:"nsdr11", note:"11 דקות של מנוחה עמוקה ללא שינה. אותו מבנה כמו Focus 10 — בלי אודיו ובלי מסגור. השווה ביומן: איך זה הרגיש לעומת F-10 שאתה מכיר?"},
+  {d:34, t:"מצב קשב 15Hz", x:"attn", note:"הפעם בעיניים פקוחות, בשעת עבודה או למידה — לא לפני שינה. זכור: ללמידה לא משתמשים בתדרי ההרפיה (פרק 16). רשום שורה על איכות המיקוד."},
+  {d:35, t:"תנומת אדיסון", x:"edison", note:"אחר צהריים מוקדם. נסח שאלה, אצבע על העיגול, ותן ל-N1 לעבוד (83% מול 30%, פרק 18). תייג את הרשומה ביומן כגבול-שינה."},
+  {d:36, t:"פרוטוקול השינה", x:"sleep", note:"הערב: כניסה לשינה עם 3Hz — התדר שנקשר להארכת N3 (פרק 16). מחר ביומן השתמש בשדה המשודרג: ער / בתפר / נרדמתי. מתקדמים: נסו את 0.25Hz הניסיוני."},
+  {d:37, t:"NSDR ארוך + סיכום ומדידה", x:"nsdr20", note:"20 דקות NSDR, ואחריהן: שאלון TMS על הסשן, PVT שני להשוואה מול יום 31 — והחלטה מחודשת על מבנה ההמשך, הפעם עם הכלים החדשים בארגז."}]},
 ];
 
 const journey = {
   data(){ return store.get('gw_journey', {start:null, done:{}}); },
   save(d){ store.set('gw_journey', d); backup.touch(); try{ daily.render(); }catch(e){} },
-  nextDay(){ const d=this.data(); for(let i=1;i<=30;i++){ if(!d.done[i]) return i; } return 31; },
+  nextDay(){ const d=this.data(); for(let i=1;i<=37;i++){ if(!d.done[i]) return i; } return 38; },
   start(){ const d=this.data(); d.start = new Date().toISOString().slice(0,10); this.save(d); this.render();
     modal('המסע התחיל 🌌','30 יום, משימה אחת בכל יום. התחל היום ביום 1 — היכרות עם הצליל. ואל תשכח: הירדמות היא לא כישלון, ועקביות גוברת על משך.'); },
   toggle(day){ const d=this.data(); const nx=this.nextDay();
     if(!d.done[day] && day>nx){ modal('אל תדלגו','הכלל מספר המחקר: כל תרגיל מניח מיומנות שנרכשה קודם. היום הבא שלך במסע הוא יום '+nx+'.'); return; }
     d.done[day]=!d.done[day]; if(!d.done[day]) delete d.done[day]; this.save(d); this.render(); },
-  autoMark(exId){ const d=this.data(); if(!d.start) return; const nx=this.nextDay(); if(nx>30) return;
+  autoMark(exId){ const d=this.data(); if(!d.start) return; const nx=this.nextDay(); if(nx>37) return;
     const day = JOURNEY_WEEKS.flatMap(w=>w.days).find(x=>x.d===nx);
     if(day && day.x===exId){ d.done[nx]=true; this.save(d); this.render(); } },
   act(day){ const info = JOURNEY_WEEKS.flatMap(w=>w.days).find(x=>x.d===day);
@@ -4682,26 +4709,28 @@ const journey = {
     if(!d.start){
       box.innerHTML = `<div class="card" style="text-align:center;padding:40px">
         <div style="font-size:2.4rem">🌌</div>
-        <h3 class="mt">30 יום · 4 שבועות · צעד אחד ביום</h3>
-        <p class="muted mt" style="max-width:560px;margin-inline:auto;font-size:.93rem">שבוע 1 — הכנה ויסודות · שבוע 2 — Focus 10 לעומק · שבוע 3 — Focus 12 והרחבה · שבוע 4 — אינטגרציה. זמן קבוע ביום (עדיף בוקר), 20–35 דקות, ויומן אחרי כל מפגש — שלוש שורות מספיקות.</p>
+        <h3 class="mt">30 יום · 4 שבועות · צעד אחד ביום · + שבוע הרחבה</h3>
+        <p class="muted mt" style="max-width:560px;margin-inline:auto;font-size:.93rem">שבוע 1 — הכנה ויסודות · שבוע 2 — Focus 10 לעומק · שבוע 3 — Focus 12 והרחבה · שבוע 4 — אינטגרציה · ולסיום, רשות: שבוע ההרחבה — הכלים החדשים מפרקי המחקר 16–19. זמן קבוע ביום (עדיף בוקר), 20–35 דקות, ויומן אחרי כל מפגש — שלוש שורות מספיקות.</p>
         <button class="btn btn-primary mt2" onclick="journey.start()">התחל את המסע ←</button>
       </div>`; return;
     }
-    const doneN = Object.keys(d.done).length, nx=this.nextDay();
-    const pct = Math.round(doneN/30*100);
+    const coreN = Object.keys(d.done).filter(k=>+k<=30).length;
+    const extN = Object.keys(d.done).filter(k=>+k>30).length;
+    const nx=this.nextDay();
+    const pct = Math.round(coreN/30*100);
     let html = `<div class="card"><div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
-      <h3>ההתקדמות שלך · <span style="color:var(--cyan)">${doneN}/30</span></h3>
-      <span class="pill">${nx<=30 ? 'היום הבא: יום '+nx : 'המסע הושלם 🎉'}</span></div>
+      <h3>ההתקדמות שלך · <span style="color:var(--cyan)">${coreN}/30</span>${extN?` <span style="color:var(--gold);font-size:.85em">+ הרחבה ${extN}/7</span>`:''}</h3>
+      <span class="pill">${nx<=30 ? 'היום הבא: יום '+nx : nx<=37 ? 'שבוע ההרחבה · יום '+nx : 'המסע וההרחבה הושלמו 🎉'}</span></div>
       <div class="p-progress mt" style="height:8px"><i style="width:${pct}%"></i></div>`;
-    if(nx<=30){ const info=JOURNEY_WEEKS.flatMap(w=>w.days).find(x=>x.d===nx);
+    if(nx<=37){ const info=JOURNEY_WEEKS.flatMap(w=>w.days).find(x=>x.d===nx);
       html += `<div class="mt" style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
         <div style="flex:1;min-width:220px"><b>יום ${nx} · ${info.t}</b><div class="faint" style="margin-top:3px">${info.note}</div></div>
         <button class="btn btn-primary" onclick="journey.act(${nx})">${info.x?'התחל את התרגול של היום ←':'עבור למשימה ←'}</button></div>`; }
-    else html += `<p class="muted mt" style="font-size:.92rem">שלוש אפשרויות סבירות מהספר: <b style="color:var(--ink)">מחזור נוסף</b> — עם עומק גדול יותר; <b style="color:var(--ink)">תחזוקה</b> — שלושה מפגשים בשבוע של 20 דקות + כלים יומיים; או <b style="color:var(--ink)">עצירה</b> — אם אחרי 30 ימים עקביים לא הרגשת דבר, זו תשובה לגיטימית ומידע שימושי.</p>`;
+    else html += `<p class="muted mt" style="font-size:.92rem">שלוש אפשרויות סבירות מהספר: <b style="color:var(--ink)">מחזור נוסף</b> — עם עומק גדול יותר; <b style="color:var(--ink)">תחזוקה</b> — שלושה מפגשים בשבוע של 20 דקות + כלים יומיים, ועכשיו גם כלי ההרחבה — NSDR, אנחה מחזורית ותנומת אדיסון; או <b style="color:var(--ink)">עצירה</b> — אם אחרי 30 ימים עקביים לא הרגשת דבר, זו תשובה לגיטימית ומידע שימושי.</p>`;
     html += `</div>`;
     html += JOURNEY_WEEKS.map(w=>{
       const wd = w.days.filter(x=>d.done[x.d]).length;
-      return `<details class="acc mt" ${w.days.some(x=>x.d===Math.min(nx,30))&&nx<=30?'open':''}>
+      return `<details class="acc mt" ${w.days.some(x=>x.d===Math.min(nx,37))&&nx<=37?'open':''}>
         <summary style="color:${w.c}">שבוע ${w.n} · ${w.name} <span class="pill" style="margin-inline-start:8px">${wd}/${w.days.length}</span></summary>
         <div class="acc-body">${w.days.map(x=>{
           const done=!!d.done[x.d], locked=!done && x.d>nx;
@@ -5280,7 +5309,7 @@ window.addEventListener('keydown', e=>{ if(e.key==='Escape' && document.getEleme
 })();
 
 /* ---------- גרסה ורענון כפוי ---------- */
-const APP_VERSION = '2026.08.11-b28-ext';
+const APP_VERSION = '2026.08.11-b29-ext';
 (function(){
   const set = ()=>{ const el=document.getElementById('appVer'); if(el) el.textContent = APP_VERSION; };
   set(); setTimeout(set, 300);
